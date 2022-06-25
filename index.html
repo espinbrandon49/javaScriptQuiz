@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Assets/css/style.css">
+    <title>JavaScript Code Quiz</title>
+  </head>
+  <body>
+    <header><h1>JavaScript Code Quiz</h1></header>
+    <main>
+      <section class="introduction">
+        <p>The test contains 9 questions and there is a 3 minute time limit</p>
+        <p>The timer starts when you click the start button</p>
+        <p>When you answer the question, you will be presented with another
+          question</p>
+        <p>If you answer a question incorrectly, 20 seconds is subracted from
+          the
+          clock</p>
+        <p>The game is over when all the questions or answered or the timer
+          reaches 0</p>
+        <p>When the game is over than you can save your initials and score</p>
+        <button>Start</button>
+        <button>High Scores</button>
+      </section>
+      <section class="questions">
+        <article>
+          <h2>Question 1 of 9</h2>
+          <p>In the script below, what will be the result of console.log('cat')</p>
+          <pre>
+var cat;
+cat = 'rupert'
+cat == 'rupert'
+function catName(str){
+  for(let i = 0; i &lt cat.length; i++) {
+    cat +=str
+  }
+  return cat
+} 
+catName('Rupert')
+console.log('cat')
+      </pre>
+          <fieldset>
+            <div>
+              <input type="radio" id="q1A" name="question1" value="q1B">
+              <label for="q1A">rupert</label>
+            </div>
+            <div>
+              <input type="radio" id="q1B" name="question1" value="q1B">
+              <label for="q1B">Rupert</label>
+            </div>
+            <div>
+              <input type="radio" id="q1C" name="question1" value="q1C">
+              <label for="q1C">true</label>
+            </div>
+            <div>
+              <input type="radio" id="q1D" name="question1" value="q1D">
+              <label for="q1D">cat</label>
+            </div>
+          </fieldset>
+            <button class="button" type="submit">Submit Answer</button><span class="timer"></span>
+        </article>
+      </section>
+    </main>
+
+    <script src="./Assets/js/app.js"></script>
+  </body>
+</html>

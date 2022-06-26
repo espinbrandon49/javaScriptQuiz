@@ -9,7 +9,8 @@
   </head>
   <body>
 
-    <header><h1>JavaScript Code Quiz</h1></header>
+    <header><h1>JavaScript Code Quiz</h1><span
+        id="timer">Time: 180</span></header>
 
     <main>
 
@@ -47,7 +48,7 @@ catName('Rupert')
           <fieldset required>
             <div>
               <input type="radio" id="q1A" name="question1" value="q1A">
-              <label for="q1A" >rupert</label>
+              <label for="q1A">rupert</label>
             </div>
             <div>
               <input type="radio" id="q1B" name="question1" value="q1B">
@@ -98,11 +99,11 @@ catName('Rupert')
           </fieldset>
         </article>
       </section>
-
-      <section id="submitAnswer">
-        <button id="submitButton" type="submit">Submit Answer</button><span
-          id="timer">180</span>
+      <section id="gameOver">
+        <h2>GAME OVER</h2>
+        <h3>Your score is: <span id="score"></span> </h3>
       </section>
+
 
     </main>
 
@@ -110,4 +111,4 @@ catName('Rupert')
   </body>
 </html>
 
-<!--navigate to an element section like a table of contents in VSCode-->  
+<!--navigate to an element section like a table of contents in VSCode-->

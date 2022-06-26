@@ -1,7 +1,32 @@
+let question = document.getElementsByClassName('question')
+let time = 60
+// start game 
+const startGame = () => {
+  // closes introduction and displays the first question
+  const firstQuestion = (() => {
+    question[Math.floor(Math.random() * question.length)].setAttribute('style', 'display: block')
+    document.getElementById('introduction').setAttribute('style', 'display: none')
+    document.getElementById('questionsSection').setAttribute('style', 'display: flex')
+    document.getElementById('submitAnswer').setAttribute('style', 'display: block')
+  })()
+
+  // starts the game timer
+  const startTimer = setInterval(
+    function starTimerNow() {
+      if (time > 0) {
+        time--
+        document.getElementById('timer').innerHTML = time
+      } else {
+        clearInterval(startTimer)
+        console.log('pink') //soon to be scoreBoard.display=block;
+      }
+    }, 1000)
+}
+
+//identifies the correct answer for the question being displayed
 const cat = document.getElementById('cat')
 const rupert = document.getElementById('rupert')
 
-//identifies the correct answer for the question being displayed
 const correctAnswers = () => {
   let answer
   if (window.getComputedStyle(cat).display != "none") {
@@ -12,7 +37,7 @@ const correctAnswers = () => {
   return answer
 }
 
-// grades the answer for scoring
+// grades the answer for scoring subtracting time for an incorrect answer
 let count = 0
 const submitAnswer = () => {
   const correctAnswer = correctAnswers()
@@ -20,16 +45,20 @@ const submitAnswer = () => {
     if (input.checked == true && input.value == correctAnswer) {
       count++
       console.log(input.value)
+    } else if (input.checked == true && input.value != correctAnswer){
+      time -= 20
+      console.log(time)
     }
   })
+  console.log(count)
   return count
 }
 
 // closes the answered question and displays a new one
-let questionNumber = 0
+let questionNumber = 1
 const nextQuestion = () => {
   questionNumber++
-  let question = document.getElementsByClassName('question')
+// closes current question 
   const questionAnswered = (() => {
     for (let i = 0; i < question.length; i++) {
       if (window.getComputedStyle(question[i]).display == 'block') {
@@ -38,42 +67,37 @@ const nextQuestion = () => {
       }
     }
   })()
-
+// opens a new question
   const newQuestion = (() => {
     if (question.length != 0) {
       question[Math.floor(Math.random() * question.length)].setAttribute('style', 'display: block')
     } else {
-      console.log('pink') //soon to be scoreBoard
+      document.getElementById('submitAnswer').setAttribute('style', 'display:none')
     }
   })()
   document.getElementById('qNumber').innerHTML = questionNumber
 }
 
-const gameTimer = () => {
-  let time = 5
-  const startTimer = setInterval(
-    function starTimerNow() {
-      if (time > 0) {
-        time--
-        document.getElementById('timer').innerHTML = time
-      } else {
-        clearInterval(startTimer)
-        console.log('pink') //soon to be scoreBoard
-      }
-    }, 1000)
-}
 
 //eventListener to submit answer
-document.getElementById('start').addEventListener('click', gameTimer)
+document.getElementById('start').addEventListener('click', startGame)
+
 //eventListener to submit answer
-document.querySelector('.button').addEventListener('click', () => {
+document.getElementById('submitButton').addEventListener('click', () => {
   submitAnswer()
   nextQuestion()
 })
 
-//need scoreboard
-//need populate the game
-//css MINIMAL
+// scoreboard
+// local storage to persist high scores
+// populate the game
+// css MINIMAL
+//make the fieldset required
 
 
 
+  // All question(article) elements are "display:none;" by CSS code I use.  
+  //  An elements display attribute is set to "display:block;" randomly  when submitAnswer button is clicked 
+  //Then returned to "display:none;" when submitAnswer button is clicked This also removes the className
+  // Removing the className prevents the element from being called again as the questions that are displayed are randomly selected from a classList array
+  //The game ends when the timer up or classList array of .question is empty

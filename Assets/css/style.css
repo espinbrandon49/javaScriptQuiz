@@ -2,18 +2,21 @@
   padding: 0;
   margin: 0;
 }
-.questions {
+
+#questionsSection {
   height: 50vh;
   border: 1px solid blue;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-#cat {
-  display: block;
-}
 
-#rupert {
+article {
   display: none;
 }
+
+#submitAnswer {
+  display: none;
+}
+

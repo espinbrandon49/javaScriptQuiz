@@ -8,9 +8,12 @@
     <title>JavaScript Code Quiz</title>
   </head>
   <body>
+
     <header><h1>JavaScript Code Quiz</h1></header>
+
     <main>
-      <section class="introduction">
+
+      <section id="introduction">
         <p>The test contains 9 questions and there is a 3 minute time limit</p>
         <p>The timer starts when you click the start button</p>
         <p>When you answer the question, you will be presented with another
@@ -24,8 +27,9 @@
         <button id="start">Start</button>
         <button>High Scores</button>
       </section>
-      <section class="questions">
-        <h2>Question <span id="qNumber"></span>of 9</h2>
+
+      <section id="questionsSection">
+        <h2>Question <span id="qNumber">1</span>of 9</h2>
         <article id="cat" value="cat" class="question">
           <p>In the script below, what will be the result of console.log('cat')</p>
           <pre>
@@ -40,10 +44,10 @@ function catName(str){
 } 
 catName('Rupert')
       </pre>
-          <fieldset>
+          <fieldset required>
             <div>
               <input type="radio" id="q1A" name="question1" value="q1A">
-              <label for="q1A">rupert</label>
+              <label for="q1A" >rupert</label>
             </div>
             <div>
               <input type="radio" id="q1B" name="question1" value="q1B">
@@ -95,9 +99,15 @@ catName('Rupert')
         </article>
       </section>
 
-      <button class="button" type="submit">Submit Answer</button><span id="timer">180</span>
+      <section id="submitAnswer">
+        <button id="submitButton" type="submit">Submit Answer</button><span
+          id="timer">180</span>
+      </section>
+
     </main>
 
     <script src="./Assets/js/app.js"></script>
   </body>
 </html>
+
+<!--navigate to an element section like a table of contents in VSCode-->  

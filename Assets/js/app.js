@@ -26,7 +26,9 @@ const submitAnswer = () => {
 }
 
 // closes the answered question and displays a new one
+let questionNumber = 0
 const nextQuestion = () => {
+  questionNumber++
   let question = document.getElementsByClassName('question')
   const questionAnswered = (() => {
     for (let i = 0; i < question.length; i++) {
@@ -36,36 +38,42 @@ const nextQuestion = () => {
       }
     }
   })()
+
   const newQuestion = (() => {
     if (question.length != 0) {
       question[Math.floor(Math.random() * question.length)].setAttribute('style', 'display: block')
-      console.log(question)
     } else {
       console.log('pink') //soon to be scoreBoard
     }
   })()
+  document.getElementById('qNumber').innerHTML = questionNumber
 }
 
 const gameTimer = () => {
   let time = 5
   const startTimer = setInterval(
-    function starTimer() {
+    function starTimerNow() {
       if (time > 0) {
         time--
         document.getElementById('timer').innerHTML = time
       } else {
-        console.log('pink') //soon to be scoreBoard
         clearInterval(startTimer)
+        console.log('pink') //soon to be scoreBoard
       }
     }, 1000)
 }
 
 //eventListener to submit answer
+document.getElementById('start').addEventListener('click', gameTimer)
+//eventListener to submit answer
 document.querySelector('.button').addEventListener('click', () => {
   submitAnswer()
   nextQuestion()
-  gameTimer()
 })
+
+//need scoreboard
+//need populate the game
+//css MINIMAL
 
 
 

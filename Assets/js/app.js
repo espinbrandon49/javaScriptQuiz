@@ -1,6 +1,7 @@
 const cat = document.getElementById('cat')
 const rupert = document.getElementById('rupert')
 
+//identifies the correct answer for the question being displayed
 const correctAnswers = () => {
   let answer
   if (window.getComputedStyle(cat).display != "none") {
@@ -11,6 +12,7 @@ const correctAnswers = () => {
   return answer
 }
 
+// grades the answer for scoring
 let count = 0
 const submitAnswer = () => {
   const correctAnswer = correctAnswers()
@@ -20,13 +22,12 @@ const submitAnswer = () => {
       console.log(input.value)
     }
   })
-  console.log(count)
   return count
 }
 
+// closes the answered question and displays a new one
 const nextQuestion = () => {
   let question = document.getElementsByClassName('question')
-  //let answered = document.getElementsByClassName('answered')
   const questionAnswered = (() => {
     for (let i = 0; i < question.length; i++) {
       if (window.getComputedStyle(question[i]).display == 'block') {
@@ -45,10 +46,25 @@ const nextQuestion = () => {
   })()
 }
 
-//eventListener
+const gameTimer = () => {
+  let time = 5
+  const startTimer = setInterval(
+    function starTimer() {
+      if (time > 0) {
+        time--
+        document.getElementById('timer').innerHTML = time
+      } else {
+        console.log('pink') //soon to be scoreBoard
+        clearInterval(startTimer)
+      }
+    }, 1000)
+}
+
+//eventListener to submit answer
 document.querySelector('.button').addEventListener('click', () => {
   submitAnswer()
   nextQuestion()
+  gameTimer()
 })
 
 

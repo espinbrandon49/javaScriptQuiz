@@ -4,5 +4,13 @@
 }
 
 #cat {
+  display: block;
+}
 
+#rupert {
+  display: none;
+}
+
+.answered {
+  color: blue;
 }

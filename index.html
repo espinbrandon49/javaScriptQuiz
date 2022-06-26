@@ -39,7 +39,6 @@ function catName(str){
   return cat
 } 
 catName('Rupert')
-console.log('cat')
       </pre>
           <fieldset>
             <div>
@@ -60,8 +59,47 @@ console.log('cat')
             </div>
           </fieldset>
         </article>
+
+        <article id="rupert" value="rupert">
+          <p>In the script below, what will be the result of console.log(cat)</p>
+          <pre>
+var cat;
+cat = 'rupert'
+cat == 'rupert'
+function catName(str){
+  for(let i = 0; i &lt cat.length; i++) {
+    cat +=str
+  }
+  return cat
+} 
+catName('Rupert')
+      </pre>
+          <fieldset>
+            <div>
+              <input type="radio" id="q2A" name="question1" value="q2A">
+              <label for="q2A">rupert</label>
+            </div>
+            <div>
+              <input type="radio" id="q2B" name="question1" value="q2B">
+              <label for="q2B">Rupert</label>
+            </div>
+            <div>
+              <input type="radio" id="q2C" name="question1" value="q2C">
+              <label for="q2C">true</label>
+            </div>
+            <div>
+              <input type="radio" id="q2D" name="question1" value="q2D">
+              <label for="q2D">cat</label>
+            </div>
+          </fieldset>
+        </article>
+
+
+
       </section>
-      <button class="button" type="submit">Submit Answer</button><span class="timer"></span>
+
+      <button class="button" type="submit">Submit Answer</button><span
+        class="timer">180</span>
     </main>
 
     <script src="./Assets/js/app.js"></script>

@@ -1,8 +1,13 @@
-const question1 = document.getElementById('cat')
+const cat = document.getElementById('cat')
+const rupert = document.getElementById('rupert')
+const answerArray = [cat, rupert]
+
 const correctAnswers = () => {
   let answer
-  if (window.getComputedStyle(question1).display != "none") {
-    answer ='q1A'
+  if (window.getComputedStyle(cat).display != "none") {
+    answer = 'q1D'
+  } else if (window.getComputedStyle(rupert).display != "none") {
+    answer = 'q2A'
   }
   return answer
 }
@@ -20,5 +25,26 @@ function submitAnswer() {
   return count
 }
 
-document.querySelector('.button').addEventListener('click', submitAnswer)
+const nextQuestion = () => {
+  answerArray.forEach(answer => {
+      if (window.getComputedStyle(answer).display == 'block') {
+        answer.setAttribute('style', 'display:none;')
+        answer.classList.add('answered')
+        answerArray[Math.floor(Math.random() * 2)].setAttribute('style', 'display: block')
+      }})
+}
+
+//eventListener
+document.querySelector('.button').addEventListener('click', () => {
+  submitAnswer()
+  nextQuestion()
+})
+
+//rupert.setAttribute('style', 'display:block')
+//cat.setAttribute('style', 'display:none')
+//console.log(window.getComputedStyle(cat).display)
+
+/*if (answerArray[Math.floor(Math.random() * 2)].className != 'answered') {
+answerArray[Math.floor(Math.random() * 2)].setAttribute('style', 'display: block')
+      } */     
 

@@ -1,6 +1,5 @@
 const cat = document.getElementById('cat')
 const rupert = document.getElementById('rupert')
-const answerArray = [cat, rupert]
 
 const correctAnswers = () => {
   let answer
@@ -13,7 +12,7 @@ const correctAnswers = () => {
 }
 
 let count = 0
-function submitAnswer() {
+const submitAnswer = () => {
   const correctAnswer = correctAnswers()
   document.querySelectorAll('input').forEach((input) => {
     if (input.checked == true && input.value == correctAnswer) {
@@ -26,12 +25,24 @@ function submitAnswer() {
 }
 
 const nextQuestion = () => {
-  answerArray.forEach(answer => {
-      if (window.getComputedStyle(answer).display == 'block') {
-        answer.setAttribute('style', 'display:none;')
-        answer.classList.add('answered')
-        answerArray[Math.floor(Math.random() * 2)].setAttribute('style', 'display: block')
-      }})
+  let question = document.getElementsByClassName('question')
+  //let answered = document.getElementsByClassName('answered')
+  const questionAnswered = (() => {
+    for (let i = 0; i < question.length; i++) {
+      if (window.getComputedStyle(question[i]).display == 'block') {
+        question[i].setAttribute('style', 'display:none;')
+        question[i].classList.remove('question')
+      }
+    }
+  })()
+  const newQuestion = (() => {
+    if (question.length != 0) {
+      question[Math.floor(Math.random() * question.length)].setAttribute('style', 'display: block')
+      console.log(question)
+    } else {
+      console.log('pink') //soon to be scoreBoard
+    }
+  })()
 }
 
 //eventListener
@@ -40,11 +51,5 @@ document.querySelector('.button').addEventListener('click', () => {
   nextQuestion()
 })
 
-//rupert.setAttribute('style', 'display:block')
-//cat.setAttribute('style', 'display:none')
-//console.log(window.getComputedStyle(cat).display)
 
-/*if (answerArray[Math.floor(Math.random() * 2)].className != 'answered') {
-answerArray[Math.floor(Math.random() * 2)].setAttribute('style', 'display: block')
-      } */     
 

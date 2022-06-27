@@ -27,7 +27,6 @@
         <p>The game is over when all the questions or answered or the timer
           reaches 0</p>
         <p>When the game is over than you can save your initials and score</p>
-        
         <button id="start">Start Quiz</button>
       </section>
 
@@ -49,19 +48,23 @@ catName('Rupert')
       </pre>
           <fieldset required>
             <div>
-              <input type="radio" id="q1A" name="question1" value="q1A">
+              <input class='q1' type="radio" id="q1A" name="question1"
+                value="q1A">
               <label for="q1A">A) rupert</label>
             </div>
             <div>
-              <input type="radio" id="q1B" name="question1" value="q1B">
+              <input class='q1' type="radio" id="q1B" name="question1"
+                value="q1B">
               <label for="q1B">B) Rupert</label>
             </div>
             <div>
-              <input type="radio" id="q1C" name="question1" value="q1C">
+              <input class='q1' type="radio" id="q1C" name="question1"
+                value="q1C">
               <label for="q1C">C) true</label>
             </div>
             <div>
-              <input type="radio" id="q1D" name="question1" value="q1D">
+              <input class='q1' type="radio" id="q1D" name="question1"
+                value="q1D">
               <label for="q1D">D) cat</label>
             </div>
           </fieldset>
@@ -83,23 +86,105 @@ catName('Rupert')
       </pre>
           <fieldset>
             <div>
-              <input type="radio" id="q2A" name="question1" value="q2A">
+              <input class='q2' type="radio" id="q2A" name="question2"
+                value="q2A">
               <label for="q2A">A) rupert</label>
             </div>
             <div>
-              <input type="radio" id="q2B" name="question1" value="q2B">
+              <input class='q2' type="radio" id="q2B" name="question2"
+                value="q2B">
               <label for="q2B">B) Rupert</label>
             </div>
             <div>
-              <input type="radio" id="q2C" name="question1" value="q2C">
+              <input class='q2' type="radio" id="q2C" name="question2"
+                value="q2C">
               <label for="q2C">C) true</label>
             </div>
             <div>
-              <input type="radio" id="q2D" name="question1" value="q2D">
+              <input class='q2' type="radio" id="q2D" name="question2"
+                value="q2D">
               <label for="q2D">D) cat</label>
             </div>
           </fieldset>
         </article>
+
+        <article id="trueBoolean" value="trueBoolean" class="question">
+          <p>In the script below, what will be the result of console.log(!cat !=
+            'rupert')</p>
+          <pre>
+var cat;
+cat = 'rupert'
+cat == 'rupert'
+function catName(str){
+  for(let i = 0; i &lt cat.length; i++) {
+    cat +=str
+  }
+  return cat
+} 
+catName('Rupert')
+      </pre>
+          <fieldset>
+            <div>
+              <input class='q3' type="radio" id="q3A" name="question3"
+                value="q3A">
+              <label for="q3A">A) rupert</label>
+            </div>
+            <div>
+              <input class='q3' type="radio" id="q3B" name="question3"
+                value="q3B">
+              <label for="q3B">B) Rupert</label>
+            </div>
+            <div>
+              <input class='q3' type="radio" id="q3C" name="question3"
+                value="q3C">
+              <label for="q3C">C) true</label>
+            </div>
+            <div>
+              <input class='q3' type="radio" id="q3D" name="question3"
+                value="q3D">
+              <label for="q3D">D) cat</label>
+            </div>
+          </fieldset>
+        </article>
+
+        <article id="upperSlice" value="upperSlice" class="question">
+          <p>In the script below, what will be the result of
+            console.log(cat[0].toUpperCase() + cat.slice(1))</p>
+          <pre>
+var cat;
+cat = 'rupert'
+cat == 'rupert'
+function catName(str){
+  for(let i = 0; i &lt cat.length; i++) {
+    cat +=str
+  }
+  return cat
+} 
+catName('Rupert')
+      </pre>
+          <fieldset>
+            <div>
+              <input class='q4'  type="radio" id="q4A" name="question4" value="q4A">
+              <label for="q4A">A) rupert</label>
+            </div>
+            <div>
+              <input class='q4'  type="radio" id="q4B" name="question4" value="q4B">
+              <label for="q4B">B) Rupert</label>
+            </div>
+            <div>
+              <input class='q4'  type="radio" id="q4C" name="question4" value="q4C">
+              <label for="q4C">C) true</label>
+            </div>
+            <div>
+              <input class='q4'  type="radio" id="q4D" name="question4" value="q4D">
+              <label for="q4D">D) cat</label>
+            </div>
+          </fieldset>
+        </article>
+
+
+
+
         <span id="timer">Time: 180</span>
         <span id="validate"></span>
       </section>
@@ -107,7 +192,9 @@ catName('Rupert')
       <form id="gameOver">
         <h2>ALL DONE!</h2>
         <h3>Your score is: <span id="score"></span> </h3>
-        <span><label for="initials">Enter your initials: </label></span><input
+        <span><label for="initials">Enter your initials: </label></span>
+
+        <input
           type="text" id="initials"><span><button id="submit">Submit</button></span>
       </form>
 

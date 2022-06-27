@@ -2,7 +2,7 @@ const question = document.getElementsByClassName('question')
 let time = 180
 let score = 0
 
-// START GAME
+// START QUIZ
 const startGame = () => {
   // closes introduction and displays the first question
   const firstQuestion = (() => {
@@ -25,26 +25,16 @@ const startGame = () => {
     }, 1000)
 }
 
-// USER ANSWERS A QUESTION
+// TAKE QUIZ - User answers the quiz questions
 const answersQuestion = () => {
   //identifies the correct answer for the question being displayed
-  const correctAnswers = () => {
+  const correctAnswers = (() => {
+    let answer
     const cat = document.getElementById('cat')
     const rupert = document.getElementById('rupert')
-    let answer
-    if (window.getComputedStyle(cat).display != "none") {
-      answer = 'q1D'
-    } else if (window.getComputedStyle(rupert).display != "none") {
-      answer = 'q2A'
-    }
-    return answer
-  }
+    const trueBoolean = document.getElementById('trueBoolean')
+    const upperSlice = document.getElementById('upperSlice')
 
-  // checks the answer  
-  const checkAnswer = (() => {
-    const correctAnswer = correctAnswers()
-
-    // timer for checkAnswer results display 
     const runValidate = () => {
       const validateTimer = setTimeout(
         function validate() {
@@ -52,23 +42,64 @@ const answersQuestion = () => {
         }, 1000)
     }
 
-    //checks the answer and displays a result
-    const answerChecker = (() => {
-      document.querySelectorAll('input').forEach((input) => {
-        // correct answer - score incremented by 1
-        if (input.checked == true && input.value == correctAnswer) {
-          score++
-          document.getElementById('validate').innerHTML += '<em>correct!</em>'
-          runValidate()
-          console.log(input.value) //soon to be rendered as an alert
-          // incorrect - time decremented by 20
-        } else if (input.checked == true && input.value != correctAnswer) {
-          time -= 20
-          document.getElementById('validate').innerHTML += '<em>incorrect!</em>'
-          runValidate()
-          console.log(input.value) //soon to be rendered as an alert
+    const correctAnswer = () => {
+      score++
+      console.log(score)
+      document.getElementById('validate').innerHTML += '<em>correct!</em>'
+      runValidate()
+    }
+    const incorrectAnswer = () => {
+      time -= 20
+      console.log(time)
+      document.getElementById('validate').innerHTML += '<em>incorrect</em>'
+      runValidate()
+    }
+
+    constSelectAnswer = (() => {
+      if (window.getComputedStyle(cat).display != "none") {
+        answer = 'q1D'
+        const question1 = document.getElementsByClassName('q1')
+        for (let i = 0; i < question1.length; i++) {
+          if (question1[i].checked == true && question1[i].value == answer) {
+            console.log('pink')
+            correctAnswer()
+          } else {
+            incorrectAnswer()
+            console.log('red')
+            break
+          }
         }
-      })
+      } else if (window.getComputedStyle(rupert).display != "none") {
+        answer = 'q2A'
+        const question2 = document.getElementsByClassName('q2')
+        for (let i = 0; i < question2.length; i++) {
+          if (question2[i].checked == true && question2[i].value == answer) {
+            console.log('pink')
+          } else {
+            console.log('red')
+          }
+        }
+      } else if (window.getComputedStyle(trueBoolean).display != "none") {
+        answer = 'q3C'
+        const question3 = document.getElementsByClassName('q3')
+        for (let i = 0; i < question3.length; i++) {
+          if (question3[i].checked == true && question3[i].value == answer) {
+            console.log('pink')
+          } else {
+            console.log('red')
+          }
+        }
+      } else if (window.getComputedStyle(upperSlice).display != "none") {
+        answer = 'q4B'
+        const question4 = document.getElementsByClassName('q4')
+        for (let i = 0; i < question4.length; i++) {
+          if (question4[i].checked == true && question4[i].value == answer) {
+            console.log('pink')
+          } else {
+            console.log('red')
+          }
+        }
+      }
     })()
   })()
 
@@ -84,7 +115,6 @@ const answersQuestion = () => {
           question[i].classList.remove('question')
         }
       }
-      //user can see the number of questions remaining
       document.getElementById('qNumber').innerHTML = questionNumber
     })()
 
@@ -100,7 +130,7 @@ const answersQuestion = () => {
   })()
 }
 
-// The timer runs out or all of the questions have been answered
+// END QUIZ -The timer runs out or all of the questions have been answered
 const gameOver = () => {
   time = 0
   document.getElementById('score').innerHTML = score
@@ -108,7 +138,7 @@ const gameOver = () => {
   document.getElementById('gameOver').setAttribute('style', 'display: block')
 }
 
-// Submits your score to highscores and displays highscores
+// HIGH SCORES (localStorage) - Submits your score to highscores and displays highscores
 const submitScore = (e) => {
   let highScores = [];
   e.preventDefault()
@@ -145,18 +175,43 @@ const submitScore = (e) => {
   })()
 }
 
+// EVENT LISTENERS
+//Start button
 document.getElementById('start').addEventListener('click', startGame)
+
+//Answers a question
 document.querySelectorAll('input').forEach(choice => choice.addEventListener('click', answersQuestion))
+
+// Submit Score button
 document.getElementById('submit').addEventListener('click', submitScore)
+
+// Go Back button (to quiz start)
 document.getElementById('goBack').addEventListener('click', () => location.reload())
+// Clear High Scores button (clears local storage)
+
 document.getElementById('clearHighScores').addEventListener('click', () => {
   localStorage.clear()
   document.getElementById('scoresList').setAttribute('style', 'display: none')
 })
-
-// populate the game
-// css MINIMAL
-// sort high scores
-
-
-
+    /*
+const answerChecker = (() => {
+document.querySelectorAll('input').forEach((input) => {
+// correct answer - score incremented by 1
+if (input.checked == true && input.value == correctAnswer) {
+score++
+//console.log(time)
+// console.log(score)
+console.log(input.value, ':true')
+document.getElementById('validate').innerHTML = '<em>correct!</em>'
+runValidate()
+// incorrect - time decremented by 20
+} else if (input.checked == true && input.value != correctAnswer) {
+time -= 20
+// console.log(time)
+//console.log(score)
+console.log(input.value, ':false')
+document.getElementById('validate').innerHTML = '<em>incorrect!</em>'
+runValidate()
+}
+})
+})()*/

@@ -1,6 +1,7 @@
 const question = document.getElementsByClassName('question')
-let time = 5
+let time = 180
 let score = 0
+
 
 // START GAME
 const startGame = () => {
@@ -79,31 +80,75 @@ const answersQuestion = () => {
       if (question.length != 0) {
         question[Math.floor(Math.random() * question.length)].setAttribute('style', 'display: block')
       } else {
-        // all questions have been answered, end timer
+        // all questions have been answered
         gameOver()
-        // time = 0
-        // document.getElementById('timer').innerHTML = time
       }
     })()
   })()
 }
 
+// The timer runs out or all of the questions have been answered
 const gameOver = () => {
-  console.log('GAME OVER')
   time = 0
   document.getElementById('timer').innerHTML = time
   document.getElementById('score').innerHTML = score
-  console.log(question)
-document.getElementById('questionsSection').setAttribute('style', 'display: none')
+  document.getElementById('questionsSection').setAttribute('style', 'display: none')
+  document.getElementById('gameOver').setAttribute('style', 'display: block')
 }
 
-//eventListener to submit answer
+const submitScore = (e) => {
+  let highScores = [];
+  e.preventDefault()
+
+  // gets current highScores from localStorage
+  const loadHighScores = (() => !localStorage.highScores ? setHighScores() : getHighScores())()
+
+  // adds the new score and initials to highScores and sets local storage with the new score added
+  const addScore = (() => {
+    const myInitials = document.getElementById('initials').value
+    highScores.push(myInitials);
+    setHighScores()
+  })()
+
+  function setHighScores () {
+    localStorage.setItem('highScores', JSON.stringify(highScores))
+  }
+
+  function getHighScores () {
+    highScores = JSON.parse(localStorage.getItem('highScores'))
+  } 
+
+}
+//localStorage.clear()
+console.log(localStorage.getItem('highScores'))
+//eventListener to submit start game
 document.getElementById('start').addEventListener('click', startGame)
+
 //eventListener to submit answer
 document.querySelectorAll('input').forEach(choice => choice.addEventListener('click', answersQuestion))
+
+//event listener to submit high score
+document.getElementById('submit').addEventListener('click', submitScore)
 
 // high scores
 // local storage to persist high scores
 // populate the game
+// turn article to form
 // css MINIMAL
+
+/*
+  // gets current highScores from localStorage
+  const loadHighScores = (() => {
+    if (!localStorage.highScores) {
+      //if first time playing
+      setHighScores()
+      //getHighScores()
+    } else {
+      //else use current 
+      getHighScores()
+    }
+  })
+  */
+
+
 

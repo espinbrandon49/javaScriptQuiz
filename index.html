@@ -9,8 +9,10 @@
   </head>
   <body>
 
-    <header><h1>JavaScript Code Quiz</h1><span
-        id="timer">Time: 180</span></header>
+    <header>
+      <h1>JavaScript Code Quiz</h1>
+      <a href="#highScores">High Scores</a>
+    </header>
 
     <main>
 
@@ -25,8 +27,8 @@
         <p>The game is over when all the questions or answered or the timer
           reaches 0</p>
         <p>When the game is over than you can save your initials and score</p>
-        <button id="start">Start</button>
-        <button>High Scores</button>
+        
+        <button id="start">Start Quiz</button>
       </section>
 
       <section id="questionsSection">
@@ -48,19 +50,19 @@ catName('Rupert')
           <fieldset required>
             <div>
               <input type="radio" id="q1A" name="question1" value="q1A">
-              <label for="q1A">rupert</label>
+              <label for="q1A">A) rupert</label>
             </div>
             <div>
               <input type="radio" id="q1B" name="question1" value="q1B">
-              <label for="q1B">Rupert</label>
+              <label for="q1B">B) Rupert</label>
             </div>
             <div>
               <input type="radio" id="q1C" name="question1" value="q1C">
-              <label for="q1C">true</label>
+              <label for="q1C">C) true</label>
             </div>
             <div>
               <input type="radio" id="q1D" name="question1" value="q1D">
-              <label for="q1D">cat</label>
+              <label for="q1D">D) cat</label>
             </div>
           </fieldset>
         </article>
@@ -82,32 +84,39 @@ catName('Rupert')
           <fieldset>
             <div>
               <input type="radio" id="q2A" name="question1" value="q2A">
-              <label for="q2A">rupert</label>
+              <label for="q2A">A) rupert</label>
             </div>
             <div>
               <input type="radio" id="q2B" name="question1" value="q2B">
-              <label for="q2B">Rupert</label>
+              <label for="q2B">B) Rupert</label>
             </div>
             <div>
               <input type="radio" id="q2C" name="question1" value="q2C">
-              <label for="q2C">true</label>
+              <label for="q2C">C) true</label>
             </div>
             <div>
               <input type="radio" id="q2D" name="question1" value="q2D">
-              <label for="q2D">cat</label>
+              <label for="q2D">D) cat</label>
             </div>
           </fieldset>
         </article>
+        <span id="timer">Time: 180</span>
+        <span id="validate"></span>
       </section>
 
       <form id="gameOver">
-        <h2>GAME OVER</h2>
+        <h2>ALL DONE!</h2>
         <h3>Your score is: <span id="score"></span> </h3>
         <span><label for="initials">Enter your initials: </label></span><input
           type="text" id="initials"><span><button id="submit">Submit</button></span>
       </form>
 
-
+      <section id="highScores">
+        <h2>High Scores</h2>
+        <section id="scoresList"></section>
+        <button id="goBack">Go back</button>
+        <button id="clearHighScores">Clear High Scores</button>
+      </section>
     </main>
 
     <script src="./Assets/js/app.js"></script>

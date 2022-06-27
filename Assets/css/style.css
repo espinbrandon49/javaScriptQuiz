@@ -5,6 +5,7 @@
 #introduction {
 
 }
+
 #questionsSection {
   height: 50vh;
   display: none;
@@ -18,11 +19,20 @@ article {
   display: none;
 }
 
-#gameOver {
+#validate {
+  height: 25px;
+  width: fit-content;
+  border: 1px solid black;
+} 
+#gameOver, #highScores {
   display: none;
   border: 1px solid black;
   height: fit-content;
   text-align: center;
   position: relative;
   top: 10vh;
+}
+
+#highScores{
+  display: none;
 }

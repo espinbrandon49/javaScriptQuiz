@@ -2,7 +2,6 @@ const question = document.getElementsByClassName('question')
 let time = 180
 let score = 0
 
-
 // START GAME
 const startGame = () => {
   // closes introduction and displays the first question
@@ -10,6 +9,7 @@ const startGame = () => {
     question[Math.floor(Math.random() * question.length)].setAttribute('style', 'display: block')
     document.getElementById('introduction').setAttribute('style', 'display: none')
     document.getElementById('questionsSection').setAttribute('style', 'display: flex')
+    document.getElementById('timer').setAttribute('style', 'display: block')
   })()
 
   // starts the game timer
@@ -21,14 +21,12 @@ const startGame = () => {
       } else {
         clearInterval(startTimer)
         gameOver()
-        //console.log('pink') //soon to be scoreBoard.display=block;
       }
     }, 1000)
 }
 
 // USER ANSWERS A QUESTION
 const answersQuestion = () => {
-
   //identifies the correct answer for the question being displayed
   const correctAnswers = () => {
     const cat = document.getElementById('cat')
@@ -42,21 +40,36 @@ const answersQuestion = () => {
     return answer
   }
 
-  // processes the user answer for scoring  
-  const processAnswer = (() => {
+  // checks the answer  
+  const checkAnswer = (() => {
     const correctAnswer = correctAnswers()
-    document.querySelectorAll('input').forEach((input) => {
-      // correct answer - score incremented by 1
-      if (input.checked == true && input.value == correctAnswer) {
-        score++
-        console.log(input.value)
-        // incorrect - time decremented by 20
-      } else if (input.checked == true && input.value != correctAnswer) {
-        time -= 20
-        console.log('incorrect:' + time)
-      }
-    })
-    console.log(score)
+
+    // timer for checkAnswer results display 
+    const runValidate = () => {
+      const validateTimer = setTimeout(
+        function validate() {
+          document.getElementById('validate').innerHTML = ''
+        }, 1000)
+    }
+
+    //checks the answer and displays a result
+    const answerChecker = (() => {
+      document.querySelectorAll('input').forEach((input) => {
+        // correct answer - score incremented by 1
+        if (input.checked == true && input.value == correctAnswer) {
+          score++
+          document.getElementById('validate').innerHTML += '<em>correct!</em>'
+          runValidate()
+          console.log(input.value) //soon to be rendered as an alert
+          // incorrect - time decremented by 20
+        } else if (input.checked == true && input.value != correctAnswer) {
+          time -= 20
+          document.getElementById('validate').innerHTML += '<em>incorrect!</em>'
+          runValidate()
+          console.log(input.value) //soon to be rendered as an alert
+        }
+      })
+    })()
   })()
 
   // closes the answered question and displays a new one
@@ -90,65 +103,60 @@ const answersQuestion = () => {
 // The timer runs out or all of the questions have been answered
 const gameOver = () => {
   time = 0
-  document.getElementById('timer').innerHTML = time
   document.getElementById('score').innerHTML = score
   document.getElementById('questionsSection').setAttribute('style', 'display: none')
   document.getElementById('gameOver').setAttribute('style', 'display: block')
 }
 
+// Submits your score to highscores and displays highscores
 const submitScore = (e) => {
   let highScores = [];
   e.preventDefault()
 
-  // gets current highScores from localStorage
-  const loadHighScores = (() => !localStorage.highScores ? setHighScores() : getHighScores())()
-
-  // adds the new score and initials to highScores and sets local storage with the new score added
-  const addScore = (() => {
-    const myInitials = document.getElementById('initials').value
-    highScores.push(myInitials);
-    setHighScores()
-  })()
-
-  function setHighScores () {
-    localStorage.setItem('highScores', JSON.stringify(highScores))
+  // stores local storage helper functions in an object
+  const localStorageFunctions = {
+    set: function setHighScores() {
+      localStorage.setItem('highScores', JSON.stringify(highScores))
+    },
+    get: function getHighScores() {
+      highScores = JSON.parse(localStorage.getItem('highScores'))
+    }
   }
 
-  function getHighScores () {
-    highScores = JSON.parse(localStorage.getItem('highScores'))
-  } 
-
-}
-//localStorage.clear()
-console.log(localStorage.getItem('highScores'))
-//eventListener to submit start game
-document.getElementById('start').addEventListener('click', startGame)
-
-//eventListener to submit answer
-document.querySelectorAll('input').forEach(choice => choice.addEventListener('click', answersQuestion))
-
-//event listener to submit high score
-document.getElementById('submit').addEventListener('click', submitScore)
-
-// high scores
-// local storage to persist high scores
-// populate the game
-// turn article to form
-// css MINIMAL
-
-/*
   // gets current highScores from localStorage
-  const loadHighScores = (() => {
-    if (!localStorage.highScores) {
-      //if first time playing
-      setHighScores()
-      //getHighScores()
-    } else {
-      //else use current 
-      getHighScores()
-    }
-  })
-  */
+  const loadHighScores = (() => !localStorage.highScores
+    ? localStorageFunctions.set()
+    : localStorageFunctions.get()
+  )()
+
+  // adds the new score and initials to highScores 
+  const addScore = (() => {
+    const myInitials = document.getElementById('initials').value
+    highScores.push(`${myInitials} - ${score}`);
+    localStorageFunctions.set()
+  })()
+
+  // displays high score
+  const displayHighScores = (() => {
+    document.getElementById('gameOver').setAttribute('style', 'display: none')
+    document.getElementById('highScores').setAttribute('style', 'display: block')
+    highScores.forEach(entry =>
+      document.getElementById('scoresList').innerHTML += `${entry} <br/>`)
+  })()
+}
+
+document.getElementById('start').addEventListener('click', startGame)
+document.querySelectorAll('input').forEach(choice => choice.addEventListener('click', answersQuestion))
+document.getElementById('submit').addEventListener('click', submitScore)
+document.getElementById('goBack').addEventListener('click', () => location.reload())
+document.getElementById('clearHighScores').addEventListener('click', () => {
+  localStorage.clear()
+  document.getElementById('scoresList').setAttribute('style', 'display: none')
+})
+
+// populate the game
+// css MINIMAL
+// sort high scores
 
 
 

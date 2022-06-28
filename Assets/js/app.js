@@ -1,12 +1,11 @@
-const question = document.getElementsByClassName('question')
-let time = 180
-let score = 0
+let time = 180; score = 0; questionNumber = 1
 
 // START QUIZ
-const startGame = () => {
+const startQuiz = () => {
   // closes introduction and displays the first question
   const firstQuestion = (() => {
-    question[Math.floor(Math.random() * question.length)].setAttribute('style', 'display: block')
+    const question1 = document.getElementsByClassName('question')
+    question1[Math.floor(Math.random() * question1.length)].setAttribute('style', 'display: block')
     document.getElementById('introduction').setAttribute('style', 'display: none')
     document.getElementById('questionsSection').setAttribute('style', 'display: flex')
     document.getElementById('timer').setAttribute('style', 'display: block')
@@ -26,31 +25,36 @@ const startGame = () => {
 }
 
 // TAKE QUIZ - User answers the quiz questions
-const answersQuestion = () => {
-  //identifies the correct answer for the question being displayed
-  const correctAnswers = (() => {
-    const runValidate = () => {
-      const validateTimer = setTimeout(
-        function validate() {
-          document.getElementById('validate').innerHTML = ''
-        }, 1000)
+const takeQuiz = () => {
+
+  const questionsAndAnswers = (() => {
+
+    // provides feedback for the answers selected
+    answerFeedback = {
+      feedBackTimer: function runValidate() {
+        const validateTimer = setTimeout(
+          function validate() {
+            document.getElementById('validate').innerHTML = ''
+          }, 1000)
+      },
+
+      correct: function correctAnswer() {
+        score++
+        console.log(score)
+        document.getElementById('validate').innerHTML += '<em>correct!</em>'
+        this.feedBackTimer()
+      },
+
+      incorrect: function incorrectAnswer() {
+        time -= 20
+        console.log(time)
+        document.getElementById('validate').innerHTML += '<em>incorrect</em>'
+        this.feedBackTimer()
+      }
     }
 
-    const correctAnswer = () => {
-      score++
-      console.log(score)
-      document.getElementById('validate').innerHTML += '<em>correct!</em>'
-      runValidate()
-    }
-
-    const incorrectAnswer = () => {
-      time -= 20
-      console.log(time)
-      document.getElementById('validate').innerHTML += '<em>incorrect</em>'
-      runValidate()
-    }
-
-    const SelectAnswer = (() => {
+    //identifies the correct answer for the question being displayed
+    const selectAnswer = (() => {
       const cat = document.getElementById('cat')
       const rupert = document.getElementById('rupert')
       const trueBoolean = document.getElementById('trueBoolean')
@@ -63,39 +67,40 @@ const answersQuestion = () => {
 
       if (window.getComputedStyle(cat).display != "none") {
         const question1 = document.getElementById('q1D')
-        question1.checked ? correctAnswer() : incorrectAnswer()
+        question1.checked ? answerFeedback.correct() : answerFeedback.incorrect()
       } else if (window.getComputedStyle(rupert).display != "none") {
         const question2 = document.getElementById('q2A')
-        question2.checked ? correctAnswer() : incorrectAnswer()
+        question2.checked ? answerFeedback.correct() : answerFeedback.incorrect()
       } else if (window.getComputedStyle(trueBoolean).display != "none") {
         const question3 = document.getElementById('q3C')
-        question3.checked ? correctAnswer() : incorrectAnswer()
+        question3.checked ? answerFeedback.correct() : answerFeedback.incorrect()
       } else if (window.getComputedStyle(upperSlice).display != "none") {
         const question4 = document.getElementById('q4B')
-        question4.checked ? correctAnswer() : incorrectAnswer()
+        question4.checked ? answerFeedback.correct() : answerFeedback.incorrect()
       } else if (window.getComputedStyle(meow1).display != "none") {
         const question5 = document.getElementById('q5C')
-        question5.checked ? correctAnswer() : incorrectAnswer()
+        question5.checked ? answerFeedback.correct() : answerFeedback.incorrect()
       } else if (window.getComputedStyle(meow2).display != "none") {
         const question6 = document.getElementById('q6B')
-        question6.checked ? correctAnswer() : incorrectAnswer()
+        question6.checked ? answerFeedback.correct() : answerFeedback.incorrect()
       } else if (window.getComputedStyle(meow3).display != "none") {
         const question7 = document.getElementById('q7D')
-        question7.checked ? correctAnswer() : incorrectAnswer()
+        question7.checked ? answerFeedback.correct() : answerFeedback.incorrect()
       } else if (window.getComputedStyle(meow4).display != "none") {
         const question8 = document.getElementById('q8A')
-        question8.checked ? correctAnswer() : incorrectAnswer()
+        question8.checked ? answerFeedback.correct() : answerFeedback.incorrect()
       } else if (window.getComputedStyle(meow5).display != "none") {
         const question9 = document.getElementById('q9B')
-        question9.checked ? correctAnswer() : incorrectAnswer()
-      } 
+        question9.checked ? answerFeedback.correct() : answerFeedback.incorrect()
+      }
     })()
   })()
 
   // closes the answered question and displays a new one
   const nextQuestion = (() => {
-    let questionNumber = 1
+    const question = document.getElementsByClassName('question')
     questionNumber++
+    document.getElementById('questionNumber').innerHTML=questionNumber
     // closes current question 
     const questionAnswered = (() => {
       for (let i = 0; i < question.length; i++) {
@@ -104,7 +109,7 @@ const answersQuestion = () => {
           question[i].classList.remove('question')
         }
       }
-      document.getElementById('qNumber').innerHTML = questionNumber
+      // document.getElementById('questionNumber').innerHTML = questionNumber
     })()
 
     // opens a new question
@@ -117,6 +122,7 @@ const answersQuestion = () => {
       }
     })()
   })()
+
 }
 
 // END QUIZ -The timer runs out or all of the questions have been answered
@@ -166,10 +172,10 @@ const submitScore = (e) => {
 
 // EVENT LISTENERS
 //Start button
-document.getElementById('start').addEventListener('click', startGame)
+document.getElementById('start').addEventListener('click', startQuiz)
 
 //Answers a question
-document.querySelectorAll('input').forEach(choice => choice.addEventListener('click', answersQuestion))
+document.querySelectorAll('input').forEach(choice => choice.addEventListener('click', takeQuiz))
 
 // Submit Score button
 document.getElementById('submit').addEventListener('click', submitScore)

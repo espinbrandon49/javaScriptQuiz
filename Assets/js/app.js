@@ -130,9 +130,9 @@ const quizOver = () => {
   time = 0
   document.getElementById('score').innerHTML = score
   document.getElementById('questionsSection').setAttribute('style', 'display: none')
-  document.getElementById('gameOver').setAttribute('style', 'display: block')
+  document.getElementById('quizOver').setAttribute('style', 'display: flex')
 }
-
+let highScores = [];
 // HIGH SCORES (localStorage) - Submits your score to highscores and displays highscores
 const submitScore = (e) => {
   let highScores = [];
@@ -161,25 +161,31 @@ const submitScore = (e) => {
     localStorageFunctions.set()
   })()
 
-  // displays high score
+  // displays high score from submit score button
   const displayHighScores = (() => {
-    document.getElementById('gameOver').setAttribute('style', 'display: none')
+    document.getElementById('quizOver').setAttribute('style', 'display: none')
     document.getElementById('highScores').setAttribute('style', 'display: block')
     highScores.forEach(entry =>
       document.getElementById('scoresList').innerHTML += `${entry} <br/>`)
   })()
-
-  console.log(highScores)
 }
 
 // EVENT LISTENERS
 //Start button
 document.getElementById('start').addEventListener('click', startQuiz)
 
-// Display highScores
+// Display highScores from header
 document.getElementById('highScoresLink').addEventListener('click', () => {
   document.getElementById('introduction').setAttribute('style', 'display: none')
+  document.getElementById('questionsSection').setAttribute('style', 'display: none') 
+  document.getElementById('quizOver').setAttribute('style', 'display: none') 
   document.getElementById('highScores').setAttribute('style', 'display: block')
+  document.getElementById('quizOver').setAttribute('style', 'display: none')
+  document.getElementById('highScores').setAttribute('style', 'display: block')
+  displayScores = JSON.parse(localStorage.getItem('highScores'))
+  displayScores.forEach(entry =>
+    document.getElementById('scoresList').innerHTML += `${entry} <br/>`)
+  
 })
 
 // Answers a question

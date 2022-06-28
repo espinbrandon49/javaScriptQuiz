@@ -10,7 +10,7 @@
   <body>
     <header>
       <h1>JavaScript Code Quiz</h1>
-      <nav><a id="highScoresLink" href="#highScores">High Scores</a></nav>
+      <nav><a id="highScoresLink" href="#">High Scores</a></nav>
     </header>
     <div id="container">
       <main>
@@ -19,7 +19,7 @@
           <p>If you answer a question incorrectly, 20 seconds is subracted from
             the
             clock</p>
-          <p>The game is over when all the questions or answered or the timer
+          <p>The game is over when all the questions are answered or the timer
             reaches 0</p>
 
           <button id="start">Start Quiz</button>
@@ -394,12 +394,14 @@
           </section>
         </section>
 
-        <form id="gameOver">
+        <form id="quizOver">
           <h2>ALL DONE!</h2>
           <h3>Your score is: <span id="score"></span> </h3>
-          <span><label for="initials">Enter your initials: </label></span>
-          <input
-            type="text" id="initials"><span><button id="submit">Submit</button></span>
+          <div id="submitScore">
+            <label for="initials">Enter your initials:</label>
+            <input type="text" id="initials" />
+            <button id="submit">Submit</button>
+          </div>
         </form>
 
         <section id="highScores">

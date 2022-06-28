@@ -8,13 +8,11 @@
     <title>JavaScript Code Quiz</title>
   </head>
   <body>
-
+    <header>
+      <h1>JavaScript Code Quiz</h1>
+      <nav><a id="highScoresLink" href="#highScores">High Scores</a></nav>
+    </header>
     <div id="container">
-      <header>
-        <h1>JavaScript Code Quiz</h1>
-        <nav><a id="highScoresLink" href="#highScores">High Scores</a></nav>
-      </header>
-
       <main>
         <section id="introduction">
           <p>The quiz contains 9 questions and there is a 3 minute time limit</p>
@@ -23,7 +21,7 @@
             clock</p>
           <p>The game is over when all the questions or answered or the timer
             reaches 0</p>
-    
+
           <button id="start">Start Quiz</button>
         </section>
 
@@ -31,18 +29,19 @@
           <h2>Question <span id="questionNumber">1</span> of 9</h2>
           <article id="cat" value="cat" class="question">
             <p>In the script below, what will be the result of <br>
-              console.log('cat')</p>
+              console.log('cat')?</p>
             <pre>
-var cat;
-cat = 'rupert'
-cat == 'rupert'
-function catName(str){
-  for(let i = 0; i &lt cat.length; i++) {
-    cat +=str
-  }
-  return cat
-} 
-catName('Rupert')
+
+              var cat;
+              cat = 'rupert'
+              cat == 'rupert'
+              function catName(str){
+                for(let i = 0; i &lt cat.length; i++) {
+                  cat +=str
+                }
+                return cat
+              } 
+              catName('Rupert')
       </pre>
             <fieldset required>
               <div>
@@ -70,18 +69,19 @@ catName('Rupert')
 
           <article id="rupert" value="rupert" class="question">
             <p>In the script below, what will be the result of <br>
-              console.log(cat)</p>
+              console.log(cat)?</p>
             <pre>
-var cat;
-cat = 'rupert'
-cat == 'rupert'
-function catName(str){
-  for(let i = 0; i &lt cat.length; i++) {
-    cat +=str
-  }
-  return cat
-} 
-catName('Rupert')
+
+              var cat;
+              cat = 'rupert'
+              cat == 'rupert'
+              function catName(str){
+                for(let i = 0; i &lt cat.length; i++) {
+                  cat +=str
+                }
+                return cat
+              } 
+              catName('Rupert')
       </pre>
             <fieldset>
               <div>
@@ -110,18 +110,19 @@ catName('Rupert')
           <article id="trueBoolean" value="trueBoolean" class="question">
             <p>In the script below, what will be the result of <br>
               console.log(!cat !=
-              'rupert')</p>
+              'rupert')?</p>
             <pre>
-var cat;
-cat = 'rupert'
-cat == 'rupert'
-function catName(str){
-  for(let i = 0; i &lt cat.length; i++) {
-    cat +=str
-  }
-  return cat
-} 
-catName('Rupert')
+
+              var cat;
+              cat = 'rupert'
+              cat == 'rupert'
+              function catName(str){
+                for(let i = 0; i &lt cat.length; i++) {
+                  cat +=str
+                }
+                return cat
+              } 
+              catName('Rupert')
       </pre>
             <fieldset>
               <div>
@@ -149,18 +150,19 @@ catName('Rupert')
 
           <article id="upperSlice" value="upperSlice" class="question">
             <p>In the script below, what will be the result of<br>
-              console.log(cat[0].toUpperCase() + cat.slice(1))</p>
+              console.log(cat[0].toUpperCase()+cat.slice(1))?</p>
             <pre>
-var cat;
-cat = 'rupert'
-cat == 'rupert'
-function catName(str){
-  for(let i = 0; i &lt cat.length; i++) {
-    cat +=str
-  }
-  return cat
-} 
-catName('Rupert')
+
+              var cat;
+              cat = 'rupert'
+              cat == 'rupert'
+              function catName(str){
+                for(let i = 0; i &lt cat.length; i++) {
+                  cat +=str
+                }
+                return cat
+              } 
+              catName('Rupert')
       </pre>
             <fieldset>
               <div>
@@ -188,16 +190,19 @@ catName('Rupert')
 
           <article id="meow1" value="meow1" class="question">
             <p>In the script below, what will be the result of<br>
-              console.log(catFunc(meow))</p>
+              console.log(catFunc(meow))?</p>
             <pre>
-var meow = 'baby'
 
-function catFunc(str) {
-  var meow = 'Hit me ' + str + ' one more time'
-  
-  return meow
-}
-catFunc(meow)
+              var meow = 'baby'
+
+              function catFunc(str) {
+            
+                var meow = 'Hit me ' + str + ' one more time'
+              
+                return meow
+              }
+            
+              catFunc(meow)
       </pre>
             <fieldset>
               <div>
@@ -225,16 +230,19 @@ catFunc(meow)
 
           <article id="meow2" value="meow2" class="question">
             <p>In the script below, what will be the result of<br>
-              console.log(meow)</p>
+              console.log(meow)?</p>
             <pre>
-var meow = 'baby'
 
-function catFunc(str) {
-  var meow = 'Hit me ' + str + ' one more time'
-  
-  return meow
-}
-catFunc(meow)
+              var meow = 'baby'
+
+              function catFunc(str) {
+            
+                var meow = 'Hit me ' + str + ' one more time'
+              
+                return meow
+              }
+            
+              catFunc(meow)
       </pre>
             <fieldset>
               <div>
@@ -262,16 +270,19 @@ catFunc(meow)
 
           <article id="meow3" value="meow3" class="question">
             <p>In the script below, what will be the result of<br>
-              console.log(!!catFunc(meow))</p>
+              console.log(!!catFunc(meow))?</p>
             <pre>
-var meow = 'baby'
 
-function catFunc(str) {
-  var meow = 'Hit me ' + str + ' one more time'
-  
-  return meow
-}
-catFunc(meow)
+              var meow = 'baby'
+
+              function catFunc(str) {
+            
+                var meow = 'Hit me ' + str + ' one more time'
+              
+                return meow
+              }
+            
+              catFunc(meow)
       </pre>
             <fieldset>
               <div>
@@ -299,16 +310,19 @@ catFunc(meow)
 
           <article id="meow4" value="meow4" class="question">
             <p>In the script below, what will be the result of<br>
-              console.log('meow')</p>
+              console.log('meow')?</p>
             <pre>
-var meow = 'baby'
 
-function catFunc(str) {
-  var meow = 'Hit me ' + str + ' one more time'
-  
-  return meow
-}
-catFunc(meow)
+              var meow = 'baby'
+
+              function catFunc(str) {
+            
+                var meow = 'Hit me ' + str + ' one more time'
+              
+                return meow
+              }
+            
+              catFunc(meow)
       </pre>
             <fieldset>
               <div>
@@ -336,14 +350,20 @@ catFunc(meow)
 
           <article id="meow5" value="meow5" class="question">
             <p>In the script below, what will be the result of<br>
-              console.log(kittyCorner)</p>
+              console.log(kittyCorner)?</p>
             <pre>
-var kittyCorner
-kittyCorner = false
-kittyCorner != true
-kittyCorner != false
-kittyCorner = true
-      </pre>
+
+                var kittyCorner
+              
+                kittyCorner = false
+              
+                kittyCorner != true
+              
+                kittyCorner != false
+              
+                kittyCorner = true
+              
+            </pre>
             <fieldset>
               <div>
                 <input class='q9' type="radio" id="q9A" name="question9"
@@ -368,8 +388,10 @@ kittyCorner = true
             </fieldset>
           </article>
 
-          <span id="timer">Time: 180</span>
-          <span id="validate"></span>
+          <section id="validateTime">
+            <span id="validate">&nbsp</span>
+            <div id="time"><p>Time</p><span id="timer">: 180</span></div>
+          </section>
         </section>
 
         <form id="gameOver">

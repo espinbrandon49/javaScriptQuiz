@@ -16,7 +16,7 @@ const startQuiz = () => {
     function starTimerNow() {
       if (time > 0) {
         time--
-        document.getElementById('timer').innerHTML = time
+        document.getElementById('timer').innerHTML = ": " + time 
       } else {
         clearInterval(startTimer)
         quizOver()
@@ -34,7 +34,7 @@ const takeQuiz = () => {
       feedBackTimer: function runValidate() {
         const validateTimer = setTimeout(
           function validate() {
-            document.getElementById('validate').innerHTML = ''
+            document.getElementById('validate').innerHTML = '&nbsp'
           }, 1000)
       },
 

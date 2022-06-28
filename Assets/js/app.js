@@ -1,4 +1,4 @@
-let time = 180; score = 0; questionNumber = 1
+let time = 18000; score = 0; questionNumber = 1
 
 // START QUIZ
 const startQuiz = () => {
@@ -19,7 +19,7 @@ const startQuiz = () => {
         document.getElementById('timer').innerHTML = time
       } else {
         clearInterval(startTimer)
-        gameOver()
+        quizOver()
       }
     }, 1000)
 }
@@ -29,7 +29,7 @@ const takeQuiz = () => {
 
   const questionsAndAnswers = (() => {
 
-    // provides feedback for the answers selected
+    // provides feedback for the answers selected, stored in an object
     answerFeedback = {
       feedBackTimer: function runValidate() {
         const validateTimer = setTimeout(
@@ -53,7 +53,7 @@ const takeQuiz = () => {
       }
     }
 
-    //identifies the correct answer for the question being displayed
+    // identifies the correct answer for the question being displayed
     const selectAnswer = (() => {
       const cat = document.getElementById('cat')
       const rupert = document.getElementById('rupert')
@@ -99,8 +99,10 @@ const takeQuiz = () => {
   // closes the answered question and displays a new one
   const nextQuestion = (() => {
     const question = document.getElementsByClassName('question')
-    questionNumber++
-    document.getElementById('questionNumber').innerHTML=questionNumber
+
+    //updates question number
+    questionNumber++; document.getElementById('questionNumber').innerHTML = questionNumber
+
     // closes current question 
     const questionAnswered = (() => {
       for (let i = 0; i < question.length; i++) {
@@ -109,7 +111,6 @@ const takeQuiz = () => {
           question[i].classList.remove('question')
         }
       }
-      // document.getElementById('questionNumber').innerHTML = questionNumber
     })()
 
     // opens a new question
@@ -118,15 +119,14 @@ const takeQuiz = () => {
         question[Math.floor(Math.random() * question.length)].setAttribute('style', 'display: block')
       } else {
         // all questions have been answered
-        gameOver()
+        quizOver()
       }
     })()
   })()
-
 }
 
 // END QUIZ -The timer runs out or all of the questions have been answered
-const gameOver = () => {
+const quizOver = () => {
   time = 0
   document.getElementById('score').innerHTML = score
   document.getElementById('questionsSection').setAttribute('style', 'display: none')
@@ -168,13 +168,21 @@ const submitScore = (e) => {
     highScores.forEach(entry =>
       document.getElementById('scoresList').innerHTML += `${entry} <br/>`)
   })()
+
+  console.log(highScores)
 }
 
 // EVENT LISTENERS
 //Start button
 document.getElementById('start').addEventListener('click', startQuiz)
 
-//Answers a question
+// Display highScores
+document.getElementById('highScoresLink').addEventListener('click', () => {
+  document.getElementById('introduction').setAttribute('style', 'display: none')
+  document.getElementById('highScores').setAttribute('style', 'display: block')
+})
+
+// Answers a question
 document.querySelectorAll('input').forEach(choice => choice.addEventListener('click', takeQuiz))
 
 // Submit Score button
@@ -182,16 +190,15 @@ document.getElementById('submit').addEventListener('click', submitScore)
 
 // Go Back button (to quiz start)
 document.getElementById('goBack').addEventListener('click', () => location.reload())
-// Clear High Scores button (clears local storage)
 
+// Clear High Scores button (clears local storage)
 document.getElementById('clearHighScores').addEventListener('click', () => {
-  localStorage.clear()
+  localStorage.removeItem('highScores')
   document.getElementById('scoresList').setAttribute('style', 'display: none')
 })
 
 /**
- * sort high scores
- * render high scores as list
  * sort highscores
  * CSS
  */
+

@@ -9,33 +9,30 @@
   </head>
   <body>
 
-    <header>
-      <h1>JavaScript Code Quiz</h1>
-      <a href="#highScores">High Scores</a>
-    </header>
+    <div id="container">
+      <header>
+        <h1>JavaScript Code Quiz</h1>
+        <nav><a id="highScoresLink" href="#highScores">High Scores</a></nav>
+      </header>
 
-    <main>
+      <main>
+        <section id="introduction">
+          <p>The quiz contains 9 questions and there is a 3 minute time limit</p>
+          <p>If you answer a question incorrectly, 20 seconds is subracted from
+            the
+            clock</p>
+          <p>The game is over when all the questions or answered or the timer
+            reaches 0</p>
+    
+          <button id="start">Start Quiz</button>
+        </section>
 
-      <section id="introduction">
-        <p>The test contains 9 questions and there is a 3 minute time limit</p>
-        <p>The timer starts when you click the start button</p>
-        <p>When you answer the question, you will be presented with another
-          question</p>
-        <p>If you answer a question incorrectly, 20 seconds is subracted from
-          the
-          clock</p>
-        <p>The game is over when all the questions or answered or the timer
-          reaches 0</p>
-        <p>When the game is over than you can save your initials and score</p>
-        <button id="start">Start Quiz</button>
-      </section>
-
-      <section id="questionsSection">
-        <h2>Question <span id="questionNumber">1</span>of 9</h2>
-        <article id="cat" value="cat" class="question">
-          <p>In the script below, what will be the result of <br>
-            console.log('cat')</p>
-          <pre>
+        <section id="questionsSection">
+          <h2>Question <span id="questionNumber">1</span> of 9</h2>
+          <article id="cat" value="cat" class="question">
+            <p>In the script below, what will be the result of <br>
+              console.log('cat')</p>
+            <pre>
 var cat;
 cat = 'rupert'
 cat == 'rupert'
@@ -47,34 +44,34 @@ function catName(str){
 } 
 catName('Rupert')
       </pre>
-          <fieldset required>
-            <div>
-              <input class='q1' type="radio" id="q1A" name="question1"
-                value="q1A">
-              <label for="q1A">A) rupert</label>
-            </div>
-            <div>
-              <input class='q1' type="radio" id="q1B" name="question1"
-                value="q1B">
-              <label for="q1B">B) Rupert</label>
-            </div>
-            <div>
-              <input class='q1' type="radio" id="q1C" name="question1"
-                value="q1C">
-              <label for="q1C">C) true</label>
-            </div>
-            <div>
-              <input class='q1' type="radio" id="q1D" name="question1"
-                value="q1D">
-              <label for="q1D">D) cat</label>
-            </div>
-          </fieldset>
-        </article>
+            <fieldset required>
+              <div>
+                <input class='q1' type="radio" id="q1A" name="question1"
+                  value="q1A">
+                <label for="q1A">A) rupert</label>
+              </div>
+              <div>
+                <input class='q1' type="radio" id="q1B" name="question1"
+                  value="q1B">
+                <label for="q1B">B) Rupert</label>
+              </div>
+              <div>
+                <input class='q1' type="radio" id="q1C" name="question1"
+                  value="q1C">
+                <label for="q1C">C) true</label>
+              </div>
+              <div>
+                <input class='q1' type="radio" id="q1D" name="question1"
+                  value="q1D">
+                <label for="q1D">D) cat</label>
+              </div>
+            </fieldset>
+          </article>
 
-        <article id="rupert" value="rupert" class="question">
-          <p>In the script below, what will be the result of <br>
-            console.log(cat)</p>
-          <pre>
+          <article id="rupert" value="rupert" class="question">
+            <p>In the script below, what will be the result of <br>
+              console.log(cat)</p>
+            <pre>
 var cat;
 cat = 'rupert'
 cat == 'rupert'
@@ -86,35 +83,35 @@ function catName(str){
 } 
 catName('Rupert')
       </pre>
-          <fieldset>
-            <div>
-              <input class='q2' type="radio" id="q2A" name="question2"
-                value="q2A">
-              <label for="q2A">A) rupert</label>
-            </div>
-            <div>
-              <input class='q2' type="radio" id="q2B" name="question2"
-                value="q2B">
-              <label for="q2B">B) Rupert</label>
-            </div>
-            <div>
-              <input class='q2' type="radio" id="q2C" name="question2"
-                value="q2C">
-              <label for="q2C">C) true</label>
-            </div>
-            <div>
-              <input class='q2' type="radio" id="q2D" name="question2"
-                value="q2D">
-              <label for="q2D">D) cat</label>
-            </div>
-          </fieldset>
-        </article>
+            <fieldset>
+              <div>
+                <input class='q2' type="radio" id="q2A" name="question2"
+                  value="q2A">
+                <label for="q2A">A) rupert</label>
+              </div>
+              <div>
+                <input class='q2' type="radio" id="q2B" name="question2"
+                  value="q2B">
+                <label for="q2B">B) Rupert</label>
+              </div>
+              <div>
+                <input class='q2' type="radio" id="q2C" name="question2"
+                  value="q2C">
+                <label for="q2C">C) true</label>
+              </div>
+              <div>
+                <input class='q2' type="radio" id="q2D" name="question2"
+                  value="q2D">
+                <label for="q2D">D) cat</label>
+              </div>
+            </fieldset>
+          </article>
 
-        <article id="trueBoolean" value="trueBoolean" class="question">
-          <p>In the script below, what will be the result of <br>
-            console.log(!cat !=
-            'rupert')</p>
-          <pre>
+          <article id="trueBoolean" value="trueBoolean" class="question">
+            <p>In the script below, what will be the result of <br>
+              console.log(!cat !=
+              'rupert')</p>
+            <pre>
 var cat;
 cat = 'rupert'
 cat == 'rupert'
@@ -126,34 +123,34 @@ function catName(str){
 } 
 catName('Rupert')
       </pre>
-          <fieldset>
-            <div>
-              <input class='q3' type="radio" id="q3A" name="question3"
-                value="q3A">
-              <label for="q3A">A) rupert</label>
-            </div>
-            <div>
-              <input class='q3' type="radio" id="q3B" name="question3"
-                value="q3B">
-              <label for="q3B">B) Rupert</label>
-            </div>
-            <div>
-              <input class='q3' type="radio" id="q3C" name="question3"
-                value="q3C">
-              <label for="q3C">C) true</label>
-            </div>
-            <div>
-              <input class='q3' type="radio" id="q3D" name="question3"
-                value="q3D">
-              <label for="q3D">D) cat</label>
-            </div>
-          </fieldset>
-        </article>
+            <fieldset>
+              <div>
+                <input class='q3' type="radio" id="q3A" name="question3"
+                  value="q3A">
+                <label for="q3A">A) rupert</label>
+              </div>
+              <div>
+                <input class='q3' type="radio" id="q3B" name="question3"
+                  value="q3B">
+                <label for="q3B">B) Rupert</label>
+              </div>
+              <div>
+                <input class='q3' type="radio" id="q3C" name="question3"
+                  value="q3C">
+                <label for="q3C">C) true</label>
+              </div>
+              <div>
+                <input class='q3' type="radio" id="q3D" name="question3"
+                  value="q3D">
+                <label for="q3D">D) cat</label>
+              </div>
+            </fieldset>
+          </article>
 
-        <article id="upperSlice" value="upperSlice" class="question">
-          <p>In the script below, what will be the result of<br>
-            console.log(cat[0].toUpperCase() + cat.slice(1))</p>
-          <pre>
+          <article id="upperSlice" value="upperSlice" class="question">
+            <p>In the script below, what will be the result of<br>
+              console.log(cat[0].toUpperCase() + cat.slice(1))</p>
+            <pre>
 var cat;
 cat = 'rupert'
 cat == 'rupert'
@@ -165,34 +162,34 @@ function catName(str){
 } 
 catName('Rupert')
       </pre>
-          <fieldset>
-            <div>
-              <input class='q4' type="radio" id="q4A" name="question4"
-                value="q4A">
-              <label for="q4A">A) rupert</label>
-            </div>
-            <div>
-              <input class='q4' type="radio" id="q4B" name="question4"
-                value="q4B">
-              <label for="q4B">B) Rupert</label>
-            </div>
-            <div>
-              <input class='q4' type="radio" id="q4C" name="question4"
-                value="q4C">
-              <label for="q4C">C) true</label>
-            </div>
-            <div>
-              <input class='q4' type="radio" id="q4D" name="question4"
-                value="q4D">
-              <label for="q4D">D) cat</label>
-            </div>
-          </fieldset>
-        </article>
+            <fieldset>
+              <div>
+                <input class='q4' type="radio" id="q4A" name="question4"
+                  value="q4A">
+                <label for="q4A">A) rupert</label>
+              </div>
+              <div>
+                <input class='q4' type="radio" id="q4B" name="question4"
+                  value="q4B">
+                <label for="q4B">B) Rupert</label>
+              </div>
+              <div>
+                <input class='q4' type="radio" id="q4C" name="question4"
+                  value="q4C">
+                <label for="q4C">C) true</label>
+              </div>
+              <div>
+                <input class='q4' type="radio" id="q4D" name="question4"
+                  value="q4D">
+                <label for="q4D">D) cat</label>
+              </div>
+            </fieldset>
+          </article>
 
-        <article id="meow1" value="meow1" class="question">
-          <p>In the script below, what will be the result of<br>
-            console.log(catFunc(meow))</p>
-          <pre>
+          <article id="meow1" value="meow1" class="question">
+            <p>In the script below, what will be the result of<br>
+              console.log(catFunc(meow))</p>
+            <pre>
 var meow = 'baby'
 
 function catFunc(str) {
@@ -202,34 +199,34 @@ function catFunc(str) {
 }
 catFunc(meow)
       </pre>
-          <fieldset>
-            <div>
-              <input class='q5' type="radio" id="q5A" name="question5"
-                value="q5A">
-              <label for="q5A">A) meow</label>
-            </div>
-            <div>
-              <input class='q5' type="radio" id="q5B" name="question5"
-                value="q5B">
-              <label for="q5B">B) baby</label>
-            </div>
-            <div>
-              <input class='q5' type="radio" id="q5C" name="question5"
-                value="q5C">
-              <label for="q4C">C) Hit me baby one more time</label>
-            </div>
-            <div>
-              <input class='q5' type="radio" id="q5D" name="question5"
-                value="q5D">
-              <label for="q5D">D) true</label>
-            </div>
-          </fieldset>
-        </article>
+            <fieldset>
+              <div>
+                <input class='q5' type="radio" id="q5A" name="question5"
+                  value="q5A">
+                <label for="q5A">A) meow</label>
+              </div>
+              <div>
+                <input class='q5' type="radio" id="q5B" name="question5"
+                  value="q5B">
+                <label for="q5B">B) baby</label>
+              </div>
+              <div>
+                <input class='q5' type="radio" id="q5C" name="question5"
+                  value="q5C">
+                <label for="q4C">C) Hit me baby one more time</label>
+              </div>
+              <div>
+                <input class='q5' type="radio" id="q5D" name="question5"
+                  value="q5D">
+                <label for="q5D">D) true</label>
+              </div>
+            </fieldset>
+          </article>
 
-        <article id="meow2" value="meow2" class="question">
-          <p>In the script below, what will be the result of<br>
-            console.log(meow)</p>
-          <pre>
+          <article id="meow2" value="meow2" class="question">
+            <p>In the script below, what will be the result of<br>
+              console.log(meow)</p>
+            <pre>
 var meow = 'baby'
 
 function catFunc(str) {
@@ -239,34 +236,34 @@ function catFunc(str) {
 }
 catFunc(meow)
       </pre>
-          <fieldset>
-            <div>
-              <input class='q6' type="radio" id="q6A" name="question6"
-                value="q6A">
-              <label for="q6A">A) meow</label>
-            </div>
-            <div>
-              <input class='q6' type="radio" id="q6B" name="question6"
-                value="q6B">
-              <label for="q6B">B) baby</label>
-            </div>
-            <div>
-              <input class='q6' type="radio" id="q6C" name="question6"
-                value="q6C">
-              <label for="q6C">C) Hit me baby one more time</label>
-            </div>
-            <div>
-              <input class='q6' type="radio" id="q6D" name="question6"
-                value="q6D">
-              <label for="q6D">D) true</label>
-            </div>
-          </fieldset>
-        </article>
+            <fieldset>
+              <div>
+                <input class='q6' type="radio" id="q6A" name="question6"
+                  value="q6A">
+                <label for="q6A">A) meow</label>
+              </div>
+              <div>
+                <input class='q6' type="radio" id="q6B" name="question6"
+                  value="q6B">
+                <label for="q6B">B) baby</label>
+              </div>
+              <div>
+                <input class='q6' type="radio" id="q6C" name="question6"
+                  value="q6C">
+                <label for="q6C">C) Hit me baby one more time</label>
+              </div>
+              <div>
+                <input class='q6' type="radio" id="q6D" name="question6"
+                  value="q6D">
+                <label for="q6D">D) true</label>
+              </div>
+            </fieldset>
+          </article>
 
-        <article id="meow3" value="meow3" class="question">
-          <p>In the script below, what will be the result of<br>
-            console.log(!!catFunc(meow))</p>
-          <pre>
+          <article id="meow3" value="meow3" class="question">
+            <p>In the script below, what will be the result of<br>
+              console.log(!!catFunc(meow))</p>
+            <pre>
 var meow = 'baby'
 
 function catFunc(str) {
@@ -276,34 +273,34 @@ function catFunc(str) {
 }
 catFunc(meow)
       </pre>
-          <fieldset>
-            <div>
-              <input class='q7' type="radio" id="q7A" name="question7"
-                value="q7A">
-              <label for="q7A">A) meow</label>
-            </div>
-            <div>
-              <input class='q7' type="radio" id="q7B" name="question7"
-                value="q7B">
-              <label for="q7B">B) baby</label>
-            </div>
-            <div>
-              <input class='q7' type="radio" id="q7C" name="question7"
-                value="q7C">
-              <label for="q7C">C) Hit me baby one more time</label>
-            </div>
-            <div>
-              <input class='q7' type="radio" id="q7D" name="question7"
-                value="q7D">
-              <label for="q7D">D) true</label>
-            </div>
-          </fieldset>
-        </article>
+            <fieldset>
+              <div>
+                <input class='q7' type="radio" id="q7A" name="question7"
+                  value="q7A">
+                <label for="q7A">A) meow</label>
+              </div>
+              <div>
+                <input class='q7' type="radio" id="q7B" name="question7"
+                  value="q7B">
+                <label for="q7B">B) baby</label>
+              </div>
+              <div>
+                <input class='q7' type="radio" id="q7C" name="question7"
+                  value="q7C">
+                <label for="q7C">C) Hit me baby one more time</label>
+              </div>
+              <div>
+                <input class='q7' type="radio" id="q7D" name="question7"
+                  value="q7D">
+                <label for="q7D">D) true</label>
+              </div>
+            </fieldset>
+          </article>
 
-        <article id="meow4" value="meow4" class="question">
-          <p>In the script below, what will be the result of<br>
-            console.log('meow')</p>
-          <pre>
+          <article id="meow4" value="meow4" class="question">
+            <p>In the script below, what will be the result of<br>
+              console.log('meow')</p>
+            <pre>
 var meow = 'baby'
 
 function catFunc(str) {
@@ -313,85 +310,84 @@ function catFunc(str) {
 }
 catFunc(meow)
       </pre>
-          <fieldset>
-            <div>
-              <input class='q8' type="radio" id="q8A" name="question8"
-                value="q8A">
-              <label for="q8A">A) meow</label>
-            </div>
-            <div>
-              <input class='q8' type="radio" id="q8B" name="question8"
-                value="q8B">
-              <label for="q8B">B) baby</label>
-            </div>
-            <div>
-              <input class='q8' type="radio" id="q8C" name="question8"
-                value="q8C">
-              <label for="q8C">C) Hit me baby one more time</label>
-            </div>
-            <div>
-              <input class='q8' type="radio" id="q8D" name="question8"
-                value="q8D">
-              <label for="q8D">D) true</label>
-            </div>
-          </fieldset>
-        </article>
+            <fieldset>
+              <div>
+                <input class='q8' type="radio" id="q8A" name="question8"
+                  value="q8A">
+                <label for="q8A">A) meow</label>
+              </div>
+              <div>
+                <input class='q8' type="radio" id="q8B" name="question8"
+                  value="q8B">
+                <label for="q8B">B) baby</label>
+              </div>
+              <div>
+                <input class='q8' type="radio" id="q8C" name="question8"
+                  value="q8C">
+                <label for="q8C">C) Hit me baby one more time</label>
+              </div>
+              <div>
+                <input class='q8' type="radio" id="q8D" name="question8"
+                  value="q8D">
+                <label for="q8D">D) true</label>
+              </div>
+            </fieldset>
+          </article>
 
-        <article id="meow5" value="meow5" class="question">
-          <p>In the script below, what will be the result of<br>
-            console.log(kittyCorner)</p>
-          <pre>
+          <article id="meow5" value="meow5" class="question">
+            <p>In the script below, what will be the result of<br>
+              console.log(kittyCorner)</p>
+            <pre>
 var kittyCorner
 kittyCorner = false
 kittyCorner != true
 kittyCorner != false
 kittyCorner = true
       </pre>
-          <fieldset>
-            <div>
-              <input class='q9' type="radio" id="q9A" name="question9"
-                value="q9A">
-              <label for="q9A">A) false</label>
-            </div>
-            <div>
-              <input class='q9' type="radio" id="q9B" name="question9"
-                value="q9B">
-              <label for="q9B">B) true</label>
-            </div>
-            <div>
-              <input class='q9' type="radio" id="q9C" name="question9"
-                value="q9C">
-              <label for="q9C">C) kittyCorner</label>
-            </div>
-            <div>
-              <input class='q9' type="radio" id="q9D" name="question9"
-                value="q9D">
-              <label for="q9D">D) undefined</label>
-            </div>
-          </fieldset>
-        </article>
+            <fieldset>
+              <div>
+                <input class='q9' type="radio" id="q9A" name="question9"
+                  value="q9A">
+                <label for="q9A">A) false</label>
+              </div>
+              <div>
+                <input class='q9' type="radio" id="q9B" name="question9"
+                  value="q9B">
+                <label for="q9B">B) true</label>
+              </div>
+              <div>
+                <input class='q9' type="radio" id="q9C" name="question9"
+                  value="q9C">
+                <label for="q9C">C) kittyCorner</label>
+              </div>
+              <div>
+                <input class='q9' type="radio" id="q9D" name="question9"
+                  value="q9D">
+                <label for="q9D">D) undefined</label>
+              </div>
+            </fieldset>
+          </article>
 
-        <span id="timer">Time: 180</span>
-        <span id="validate"></span>
-      </section>
+          <span id="timer">Time: 180</span>
+          <span id="validate"></span>
+        </section>
 
-      <form id="gameOver">
-        <h2>ALL DONE!</h2>
-        <h3>Your score is: <span id="score"></span> </h3>
-        <span><label for="initials">Enter your initials: </label></span>
+        <form id="gameOver">
+          <h2>ALL DONE!</h2>
+          <h3>Your score is: <span id="score"></span> </h3>
+          <span><label for="initials">Enter your initials: </label></span>
+          <input
+            type="text" id="initials"><span><button id="submit">Submit</button></span>
+        </form>
 
-        <input
-          type="text" id="initials"><span><button id="submit">Submit</button></span>
-      </form>
-
-      <section id="highScores">
-        <h2>High Scores</h2>
-        <section id="scoresList"></section>
-        <button id="goBack">Go back</button>
-        <button id="clearHighScores">Clear High Scores</button>
-      </section>
-    </main>
-
+        <section id="highScores">
+          <h2>High Scores</h2>
+          <section id="scoresList"></section>
+          <button id="goBack">Go back</button>
+          <button id="clearHighScores">Clear High Scores</button>
+        </section>
+      </main>
+    </div>
     <script src="./Assets/js/app.js"></script>
   </body>
 </html>

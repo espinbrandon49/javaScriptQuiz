@@ -29,12 +29,6 @@ const startGame = () => {
 const answersQuestion = () => {
   //identifies the correct answer for the question being displayed
   const correctAnswers = (() => {
-    let answer
-    const cat = document.getElementById('cat')
-    const rupert = document.getElementById('rupert')
-    const trueBoolean = document.getElementById('trueBoolean')
-    const upperSlice = document.getElementById('upperSlice')
-
     const runValidate = () => {
       const validateTimer = setTimeout(
         function validate() {
@@ -48,6 +42,7 @@ const answersQuestion = () => {
       document.getElementById('validate').innerHTML += '<em>correct!</em>'
       runValidate()
     }
+
     const incorrectAnswer = () => {
       time -= 20
       console.log(time)
@@ -55,51 +50,45 @@ const answersQuestion = () => {
       runValidate()
     }
 
-    constSelectAnswer = (() => {
+    const SelectAnswer = (() => {
+      const cat = document.getElementById('cat')
+      const rupert = document.getElementById('rupert')
+      const trueBoolean = document.getElementById('trueBoolean')
+      const upperSlice = document.getElementById('upperSlice')
+      const meow1 = document.getElementById('meow1')
+      const meow2 = document.getElementById('meow2')
+      const meow3 = document.getElementById('meow3')
+      const meow4 = document.getElementById('meow4')
+      const meow5 = document.getElementById('meow5')
+
       if (window.getComputedStyle(cat).display != "none") {
-        answer = 'q1D'
-        const question1 = document.getElementsByClassName('q1')
-        for (let i = 0; i < question1.length; i++) {
-          if (question1[i].checked == true && question1[i].value == answer) {
-            console.log('pink')
-            correctAnswer()
-          } else {
-            incorrectAnswer()
-            console.log('red')
-            break
-          }
-        }
+        const question1 = document.getElementById('q1D')
+        question1.checked ? correctAnswer() : incorrectAnswer()
       } else if (window.getComputedStyle(rupert).display != "none") {
-        answer = 'q2A'
-        const question2 = document.getElementsByClassName('q2')
-        for (let i = 0; i < question2.length; i++) {
-          if (question2[i].checked == true && question2[i].value == answer) {
-            console.log('pink')
-          } else {
-            console.log('red')
-          }
-        }
+        const question2 = document.getElementById('q2A')
+        question2.checked ? correctAnswer() : incorrectAnswer()
       } else if (window.getComputedStyle(trueBoolean).display != "none") {
-        answer = 'q3C'
-        const question3 = document.getElementsByClassName('q3')
-        for (let i = 0; i < question3.length; i++) {
-          if (question3[i].checked == true && question3[i].value == answer) {
-            console.log('pink')
-          } else {
-            console.log('red')
-          }
-        }
+        const question3 = document.getElementById('q3C')
+        question3.checked ? correctAnswer() : incorrectAnswer()
       } else if (window.getComputedStyle(upperSlice).display != "none") {
-        answer = 'q4B'
-        const question4 = document.getElementsByClassName('q4')
-        for (let i = 0; i < question4.length; i++) {
-          if (question4[i].checked == true && question4[i].value == answer) {
-            console.log('pink')
-          } else {
-            console.log('red')
-          }
-        }
-      }
+        const question4 = document.getElementById('q4B')
+        question4.checked ? correctAnswer() : incorrectAnswer()
+      } else if (window.getComputedStyle(meow1).display != "none") {
+        const question5 = document.getElementById('q5C')
+        question5.checked ? correctAnswer() : incorrectAnswer()
+      } else if (window.getComputedStyle(meow2).display != "none") {
+        const question6 = document.getElementById('q6B')
+        question6.checked ? correctAnswer() : incorrectAnswer()
+      } else if (window.getComputedStyle(meow3).display != "none") {
+        const question7 = document.getElementById('q7D')
+        question7.checked ? correctAnswer() : incorrectAnswer()
+      } else if (window.getComputedStyle(meow4).display != "none") {
+        const question8 = document.getElementById('q8A')
+        question8.checked ? correctAnswer() : incorrectAnswer()
+      } else if (window.getComputedStyle(meow5).display != "none") {
+        const question9 = document.getElementById('q9B')
+        question9.checked ? correctAnswer() : incorrectAnswer()
+      } 
     })()
   })()
 
@@ -162,7 +151,7 @@ const submitScore = (e) => {
   // adds the new score and initials to highScores 
   const addScore = (() => {
     const myInitials = document.getElementById('initials').value
-    highScores.push(`${myInitials} - ${score}`);
+    highScores.push(`${score}${myInitials}`);
     localStorageFunctions.set()
   })()
 
@@ -193,25 +182,10 @@ document.getElementById('clearHighScores').addEventListener('click', () => {
   localStorage.clear()
   document.getElementById('scoresList').setAttribute('style', 'display: none')
 })
-    /*
-const answerChecker = (() => {
-document.querySelectorAll('input').forEach((input) => {
-// correct answer - score incremented by 1
-if (input.checked == true && input.value == correctAnswer) {
-score++
-//console.log(time)
-// console.log(score)
-console.log(input.value, ':true')
-document.getElementById('validate').innerHTML = '<em>correct!</em>'
-runValidate()
-// incorrect - time decremented by 20
-} else if (input.checked == true && input.value != correctAnswer) {
-time -= 20
-// console.log(time)
-//console.log(score)
-console.log(input.value, ':false')
-document.getElementById('validate').innerHTML = '<em>incorrect!</em>'
-runValidate()
-}
-})
-})()*/
+
+/**
+ * sort high scores
+ * render high scores as list
+ * sort highscores
+ * CSS
+ */

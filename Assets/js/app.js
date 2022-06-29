@@ -1,4 +1,4 @@
-let time = 18000; score = 0; questionNumber = 1
+let time = 18000; score = 0; questionNumber = 1; highScores = []
 
 // START QUIZ
 const startQuiz = () => {
@@ -16,7 +16,7 @@ const startQuiz = () => {
     function starTimerNow() {
       if (time > 0) {
         time--
-        document.getElementById('timer').innerHTML = ": " + time 
+        document.getElementById('timer').innerHTML = ": " + time
       } else {
         clearInterval(startTimer)
         quizOver()
@@ -132,7 +132,7 @@ const quizOver = () => {
   document.getElementById('questionsSection').setAttribute('style', 'display: none')
   document.getElementById('quizOver').setAttribute('style', 'display: flex')
 }
-let highScores = [];
+
 // HIGH SCORES (localStorage) - Submits your score to highscores and displays highscores
 const submitScore = (e) => {
   let highScores = [];
@@ -161,12 +161,10 @@ const submitScore = (e) => {
     localStorageFunctions.set()
   })()
 
-  // displays high score from submit score button
+  // displays high scores 
   const displayHighScores = (() => {
     document.getElementById('quizOver').setAttribute('style', 'display: none')
     document.getElementById('highScores').setAttribute('style', 'display: block')
-    highScores.forEach(entry =>
-      document.getElementById('scoresList').innerHTML += `${entry} <br/>`)
   })()
 }
 
@@ -174,18 +172,12 @@ const submitScore = (e) => {
 //Start button
 document.getElementById('start').addEventListener('click', startQuiz)
 
-// Display highScores from header
+// Display highScores 
 document.getElementById('highScoresLink').addEventListener('click', () => {
   document.getElementById('introduction').setAttribute('style', 'display: none')
-  document.getElementById('questionsSection').setAttribute('style', 'display: none') 
-  document.getElementById('quizOver').setAttribute('style', 'display: none') 
-  document.getElementById('highScores').setAttribute('style', 'display: block')
+  document.getElementById('questionsSection').setAttribute('style', 'display: none')
   document.getElementById('quizOver').setAttribute('style', 'display: none')
   document.getElementById('highScores').setAttribute('style', 'display: block')
-  displayScores = JSON.parse(localStorage.getItem('highScores'))
-  displayScores.forEach(entry =>
-    document.getElementById('scoresList').innerHTML += `${entry} <br/>`)
-  
 })
 
 // Answers a question
@@ -208,3 +200,14 @@ document.getElementById('clearHighScores').addEventListener('click', () => {
  * CSS
  */
 
+// loads high scores from local storage when the page lo
+const highScoresList = (() => {
+  const displayScores = JSON.parse(localStorage.getItem('highScores'))
+  const scoresList = document.getElementById('scoresList')
+
+  for (let i = 0; i < displayScores.length; i++) {
+    const listItem = document.createElement('li')
+    listItem.innerHTML = displayScores[i]
+    scoresList.appendChild(listItem)
+  }
+})()

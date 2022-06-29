@@ -148,7 +148,7 @@ const quizOver = () => {
 
 // HIGH SCORES (localStorage) - Submits your score to highscores and displays highscores
 const submitScore = (e) => {
-  let highScores = [];
+  //let highScores = [];
   e.preventDefault()
 
   // stores local storage set/get functions in an object

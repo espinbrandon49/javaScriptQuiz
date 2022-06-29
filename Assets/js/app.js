@@ -1,4 +1,4 @@
-let time = 18000; score = 0; questionNumber = 1; highScores = []
+let time = 180; score = 0; questionNumber = 1; highScores = []
 
 // START QUIZ
 const startQuiz = () => {
@@ -23,8 +23,7 @@ const startQuiz = () => {
       }
     }, 1000)
 }
-
-// loads high scores from local storage
+  // loads highscores from local storage
 const highScoresList = (() => {
   const displayScores = JSON.parse(localStorage.getItem('highScores'))
   const scoresList = document.getElementById('scoresList')
@@ -53,18 +52,16 @@ const takeQuiz = () => {
             document.getElementById('validate').innerHTML = '&nbsp'
           }, 1000)
       },
-
       correct: function correctAnswer() {
         score++
         console.log(score)
-        document.getElementById('validate').innerHTML += '<em>correct!</em>'
+        document.getElementById('validate').innerHTML = '<em>correct!</em>'
         this.feedBackTimer()
       },
-
       incorrect: function incorrectAnswer() {
         time -= 20
         console.log(time)
-        document.getElementById('validate').innerHTML += '<em>incorrect</em>'
+        document.getElementById('validate').innerHTML = '<em>incorrect</em>'
         this.feedBackTimer()
       }
     }
@@ -154,7 +151,7 @@ const submitScore = (e) => {
   let highScores = [];
   e.preventDefault()
 
-  // stores local storage helper functions in an object
+  // stores local storage set/get functions in an object
   const localStorageFunctions = {
     set: function setHighScores() {
       localStorage.setItem('highScores', JSON.stringify(highScores))
@@ -175,6 +172,15 @@ const submitScore = (e) => {
     const myInitials = document.getElementById('initials').value
     highScores.push(`${score}${myInitials}`);
     localStorageFunctions.set()
+
+    const newScoresList = document.getElementById('scoresList')
+    newScoresList.innerHTML = ' '
+    const updatedScores = JSON.parse(localStorage.getItem('highScores'))
+      for (let i = 0; i < updatedScores.length; i++) {
+        const listItem = document.createElement('li')
+        listItem.innerHTML = updatedScores[i]
+        newScoresList.appendChild(listItem)
+      }   
   })()
 
   // displays high scores 
@@ -211,14 +217,24 @@ document.getElementById('clearHighScores').addEventListener('click', () => {
   document.getElementById('scoresList').setAttribute('style', 'display: none')
 })
 
+// loads high scores from local storage
+/*const highScoresList = (() => {
+  const displayScores = JSON.parse(localStorage.getItem('highScores'))
+  const scoresList = document.getElementById('scoresList')
+
+  if (!localStorage.highScores) {
+    localStorage.setItem('highScores', JSON.stringify(highScores))
+  } else {
+    for (let i = 0; i < displayScores.length; i++) {
+      const listItem = document.createElement('li')
+      listItem.innerHTML = displayScores[i]
+      scoresList.appendChild(listItem)
+    }
+  }
+})()*/
+
 /**
  * 3 sort highscores
- * 2 update highscroes list right away
- * 1 one alert loads at a time
-
-
-
-
 
 * navigate to an element section like a table of contents in VSCode 
 */

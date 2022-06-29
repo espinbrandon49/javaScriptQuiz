@@ -237,7 +237,7 @@ document.getElementById('clearHighScores').addEventListener('click', () => {
  * 3 sort highscores
 
 * navigate to an element section like a table of contents in VSCode 
-*/
+*/////
 
 
 

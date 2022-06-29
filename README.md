@@ -1,12 +1,11 @@
 # JavaScript Quiz
 
 ## Description
-
 I built a timed coding quiz with multiple-choice questions that features dynamically updated HTML and CSS powered by JavaScript and stores high scores in local storage.  
 
 GitHub repository: https://github.com/espinbrandon49/javaScriptQuiz
 
-Deployed Link: https://espinbrandon49.github.io/passwordGenerator/
+Deployed Link: https://espinbrandon49.github.io/javaScriptQuiz/
 
 ## Installation
 Runs in the browser
@@ -16,25 +15,26 @@ Git clone - git@github.com:espinbrandon49/javaScriptQuiz.git
 JavaScript, HTML, CSS, Git, GitHub, Chrome DevTools
 
 ### JavaScript
-The JavaScript for this quiz can be described in context of how I used the Web API to extend the functionality of the browser to simplify complex operations and to access data. 
+The JavaScript for this quiz can be described in context of how I used the Web API to extend the functionality of the browser.
 
-* I stored and retrieved data (high scores list) using local storage
+* I stored and retrieved data (high scores list) using local storage.
 
-* Document Object Model connects the HTML to my JavaScript
-  - Used Event handlers for document click events
-  - Access to and control of HTML elements via the DOM
-  - Access to and manipulation of form data, element values, element attributes, and computed/defined styling 
+* Document Object Model connects the HTML to my JavaScript by:
+  - using event handlers for document click events
+  - accessing the HTML elements via the DOM
+  - accessing and manipulating form data, HTML, element values, element attributes, and computed/defined styling to dynamically receive input, render outputs, and store information
 
-* Used console extensively 
-  - to diagnose problems with my JavaScript
+* Used console extensively to: 
+  - diagnose problems with my JavaScript
   - view the results of my functions before I inserted into the application.
-  - Ensure my code is executing in the right order by inspecting the variables in console at certain moments of time
+  - ensure my code is executing in the right order by inspecting the variables in console at certain moments of time
  
 ### HTML
-* The source code uses semantic HTML elements
-* The structure of the HTML elements follow a logical structure that is key for DOM references, styling, and access to the elements from JS and CSS 
-* The HTML follows best practices for class/id naming conventions, indentation, etc. so that I was able to concisely use the Document interfaces such as getElementById() in JavaScript to access the (radio) inputs to display accurate outputs 
-* The HTML is referenced throughout the JS and CSS using the Web API 
+* The source code uses semantic HTML elements.
+* The structure of the HTML elements follow a logical structure that is key for DOM references, styling, and access to the elements from JS and CSS. 
+* The HTML follows best practices for class/id naming conventions, indentation, etc. so that I was able to:
+ - concisely use the Document interfaces such as getElementById() in JavaScript to access the inputs/element data, display accurate outputs, and connect event handlers.
+* The HTML is referenced throughout the JS and CSS using the Web API .
 
 ### CSS
 * The application has responsive layout that adapts to your viewport on various screen sizes
@@ -44,10 +44,9 @@ The JavaScript for this quiz can be described in context of how I used the Web A
 ## Git/GitHub
 * The Application is deployed at a live URL and loads with no errors.
 * Repository follows best practices for file structure and naming conventions.
-* Repository commit messages that follow along as the application development story unfolds.
+* Repository commit messages allow one to follow along as the application development story unfolds.
 * Repository contains quality readme with description, screenshot, link to deployed application.
 * GitHub repository contains application code.
-
 
 ## Chrome DevTools
 * Used console to diagnose problems with my JavaScript.

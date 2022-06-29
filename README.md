@@ -58,4 +58,7 @@ The JavaScript for this quiz can be described in context of how I used the Web A
 Collaboration
 Jerome Chenette
 
-Screenshots
+## Screenshots
+####  ![quizDemo1](./Assets/images/quizDemo1.gif)
+
+####  ![quizDemo2](./Assets/images/quizDemo2.gif)

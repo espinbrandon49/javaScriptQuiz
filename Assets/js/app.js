@@ -170,7 +170,7 @@ const submitScore = (e) => {
   // adds the new score and initials to highScores 
   const addScore = (() => {
     const myInitials = document.getElementById('initials').value
-    highScores.push(`${score}${myInitials}`);
+    highScores.push(`${myInitials} - ${score}`);
     localStorageFunctions.set()
 
     const newScoresList = document.getElementById('scoresList')
@@ -194,7 +194,7 @@ const submitScore = (e) => {
 //Start button
 document.getElementById('start').addEventListener('click', startQuiz)
 
-// Display highScores 
+// Display highScores from header link
 document.getElementById('highScoresLink').addEventListener('click', () => {
   document.getElementById('introduction').setAttribute('style', 'display: none')
   document.getElementById('questionsSection').setAttribute('style', 'display: none')
@@ -202,43 +202,17 @@ document.getElementById('highScoresLink').addEventListener('click', () => {
   document.getElementById('highScores').setAttribute('style', 'display: flex')
 })
 
-// Answers a question
+// Answers a question 
 document.querySelectorAll('input').forEach(choice => choice.addEventListener('click', takeQuiz))
 
-// Submit Score button
+// Submit score button
 document.getElementById('submit').addEventListener('click', submitScore)
 
-// Go Back button (to quiz start)
+// Go back button (to quiz start)
 document.getElementById('goBack').addEventListener('click', () => location.reload())
 
-// Clear High Scores button (clears local storage)
+// Clear high scores button
 document.getElementById('clearHighScores').addEventListener('click', () => {
   localStorage.removeItem('highScores')
   document.getElementById('scoresList').setAttribute('style', 'display: none')
 })
-
-// loads high scores from local storage
-/*const highScoresList = (() => {
-  const displayScores = JSON.parse(localStorage.getItem('highScores'))
-  const scoresList = document.getElementById('scoresList')
-
-  if (!localStorage.highScores) {
-    localStorage.setItem('highScores', JSON.stringify(highScores))
-  } else {
-    for (let i = 0; i < displayScores.length; i++) {
-      const listItem = document.createElement('li')
-      listItem.innerHTML = displayScores[i]
-      scoresList.appendChild(listItem)
-    }
-  }
-})()*/
-
-/**
- * 3 sort highscores
-
-* navigate to an element section like a table of contents in VSCode 
-*/////
-
-
-
-

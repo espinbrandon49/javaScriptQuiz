@@ -4,6 +4,7 @@
   padding: 0;
   margin: 0;
   font-family: 'Lora', serif;
+  list-style: none;
 }
 
 body {
@@ -36,9 +37,13 @@ header {
   font-size: 22px;
 }
 
-#start {
+button, li {
   font-size: 22px;
   padding: 5px 10px;
+
+}
+
+#start {
   margin-top: 50px;
 }
 
@@ -52,10 +57,8 @@ header {
   font-size: 22px;
   width: fit-content;
 }
-
 h2 {
-  height: fit-content;
-  width: fit-content;
+  font-size: 30px;
 }
 
 article {
@@ -87,7 +90,7 @@ fieldset>* {
   margin: 10px 0;
 }
 
-fieldset>*:hover {
+fieldset>*:hover, #highScoresLink:hover {
   opacity: 0.7;
 }
 
@@ -106,6 +109,9 @@ fieldset>*:hover {
   align-items: center;
   gap: 20px
 }
+h3 {
+  font-size: 26px;
+}
 
 #submitScore {
   display: flex;
@@ -115,16 +121,42 @@ fieldset>*:hover {
   gap: 20px;
 }
 
-#submit {
-  padding: 10px;
+#initials, #initialsLabel {
   font-size: 20px;
+  padding: 5px 10px;
+  border: 2px solid pink;
 }
+
 
 #highScores {
-  display: block;
-  border: 1px solid black;
-  height: fit-content;
+  display: none;
+  width: fit-content;
+  flex-direction: column;
+
+  align-items: center;
   text-align: center;
   margin: 50px auto;
+  gap: 20px;
+  line-height: 2;
 }
 
+#highScoreButtons {
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+/* smartphones */
+@media screen and (max-width: 595px) {
+  header {
+    flex-direction: column;
+    background: green;
+    text-align: center;
+  }
+  #highScoreButtons {
+    flex-direction: column;
+  }
+  #submitScore {
+    flex-direction: column;
+  }
+}

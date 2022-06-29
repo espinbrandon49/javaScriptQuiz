@@ -398,7 +398,7 @@
           <h2>ALL DONE!</h2>
           <h3>Your score is: <span id="score"></span> </h3>
           <div id="submitScore">
-            <label for="initials">Enter your initials:</label>
+            <label id='initialsLabel' for="initials">Enter your initials:</label>
             <input type="text" id="initials" />
             <button id="submit">Submit</button>
           </div>
@@ -407,8 +407,10 @@
         <section id="highScores">
           <h2>High Scores</h2>
           <ul id="scoresList"></ul>
+          <div id='highScoreButtons'>
           <button id="goBack">Go back</button>
           <button id="clearHighScores">Clear High Scores</button>
+        </div>
         </section>
       </main>
     </div>
@@ -416,4 +418,3 @@
   </body>
 </html>
 
-<!--navigate to an element section like a table of contents in VSCode-->

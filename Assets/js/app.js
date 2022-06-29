@@ -24,6 +24,22 @@ const startQuiz = () => {
     }, 1000)
 }
 
+// loads high scores from local storage
+const highScoresList = (() => {
+  const displayScores = JSON.parse(localStorage.getItem('highScores'))
+  const scoresList = document.getElementById('scoresList')
+
+  if (!localStorage.highScores) {
+    localStorage.setItem('highScores', JSON.stringify(highScores))
+  } else {
+    for (let i = 0; i < displayScores.length; i++) {
+      const listItem = document.createElement('li')
+      listItem.innerHTML = displayScores[i]
+      scoresList.appendChild(listItem)
+    }
+  }
+})()
+
 // TAKE QUIZ - User answers the quiz questions
 const takeQuiz = () => {
 
@@ -177,7 +193,7 @@ document.getElementById('highScoresLink').addEventListener('click', () => {
   document.getElementById('introduction').setAttribute('style', 'display: none')
   document.getElementById('questionsSection').setAttribute('style', 'display: none')
   document.getElementById('quizOver').setAttribute('style', 'display: none')
-  document.getElementById('highScores').setAttribute('style', 'display: block')
+  document.getElementById('highScores').setAttribute('style', 'display: flex')
 })
 
 // Answers a question
@@ -196,18 +212,17 @@ document.getElementById('clearHighScores').addEventListener('click', () => {
 })
 
 /**
- * sort highscores
- * CSS
- */
+ * 3 sort highscores
+ * 2 update highscroes list right away
+ * 1 one alert loads at a time
 
-// loads high scores from local storage when the page lo
-const highScoresList = (() => {
-  const displayScores = JSON.parse(localStorage.getItem('highScores'))
-  const scoresList = document.getElementById('scoresList')
 
-  for (let i = 0; i < displayScores.length; i++) {
-    const listItem = document.createElement('li')
-    listItem.innerHTML = displayScores[i]
-    scoresList.appendChild(listItem)
-  }
-})()
+
+
+
+* navigate to an element section like a table of contents in VSCode 
+*/
+
+
+
+
